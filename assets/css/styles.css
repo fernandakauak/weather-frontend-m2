@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+body {
+    background-color: blueviolet;
+}
+
+.clima-ico {
+    font-size: 36px;
+}
+
+h1, h2, .navbar-brand, .detalle h1 {
+    font-family: "Titan One", sans-serif;
+    color: white;
+}
