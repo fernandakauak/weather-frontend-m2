@@ -1,11 +1,13 @@
+/* CLASES DE CSS (IMPORTACIÓN TIPOGRAFÍA, USO DE COLORES Y TAMAÑOS, ETC) */
 @import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
 
 body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color: blueviolet;
 }
 
 .clima-ico {
-    font-size: 36px;
+    font-size: 76px;
 }
 
 h1, h2, .navbar-brand, .detalle h1 {
@@ -15,4 +17,26 @@ h1, h2, .navbar-brand, .detalle h1 {
 
 .navbar-brand {
     color: darkblue;
+}
+
+h3 {
+    color: white;
+}
+
+.detalle-clima {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+    .detalle-clima {
+        border-left: 0;
+        border-right: 0;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+    }
 }
