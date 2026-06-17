@@ -19,10 +19,10 @@ $(document).ready(function () {
     /* MULTIPLICAR CARD SIN REPETIR HTML */
     lugares.forEach(lugar => {
         contenedor.innerHTML += `
-            <article class="card col-sm-12 col-md-4 mb-3 bg-secondary bg-gradient">
-                <div class="card-body text-center">
-                    <h2 class="card-title">${lugar.nombre}</h2>
-                    <div class="clima-ico">${lugar.ico}</div>
+            <article class="card col-sm-12 col-md-4 mb-3 bg-secondary bg-gradient clima">
+                <div class="card-body text-center climacard__body">
+                    <h2 class="card-title climacard__title">${lugar.nombre}</h2>
+                    <div class="climacard__ico">${lugar.ico}</div>
                     <h3 class="card-text">${lugar.clima}</h3>
                     <a type="button" class="btn btn-outline-light col-12" id="btn-detalle-${lugar.num}" href="#">Detalles</a>
                 </div>

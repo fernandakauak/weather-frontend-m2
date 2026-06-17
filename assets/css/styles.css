@@ -1,16 +1,12 @@
 /* CLASES DE CSS (IMPORTACIÓN TIPOGRAFÍA, USO DE COLORES Y TAMAÑOS, ETC) */
 @import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
 
-body {
+.body {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color: blueviolet;
 }
 
-.clima-ico {
-    font-size: 76px;
-}
-
-h1, h2, .navbar-brand, .detalle h1 {
+h1, h2, .navbar-brand {
     font-family: "Titan One", sans-serif;
     color: white;
 }
@@ -23,17 +19,30 @@ h3 {
     color: white;
 }
 
-.detalle-clima {
+.detalle__info {
     border-left: 1px solid white;
     border-right: 1px solid white;
     border-top: 0;
     border-bottom: 0;
 }
 
+.detalle__ico {
+    font-size: 76px;
+}
+
+.climacard__title, .detalle__title {
+    font-family: "Titan One", sans-serif;
+    color: white;
+}
+
+.climacard__ico {
+    font-size: 76px;
+}
+
 
 /* MEDIA QUERIES */
 @media (max-width: 768px) {
-    .detalle-clima {
+    .detalle__info {
         border-left: 0;
         border-right: 0;
         border-top: 1px solid white;
