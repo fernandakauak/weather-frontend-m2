@@ -23,8 +23,8 @@ $(document).ready(function () {
                 <div class="card-body text-center climacard__body">
                     <h2 class="card-title climacard__title">${lugar.nombre}</h2>
                     <div class="climacard__ico">${lugar.ico}</div>
-                    <h3 class="card-text">${lugar.clima}</h3>
-                    <a type="button" class="btn btn-outline-light col-12" id="btn-detalle-${lugar.num}" href="#">Detalles</a>
+                    <h3 class="climacard__grado">${lugar.clima}</h3>
+                    <a type="button" class="btn btn-outline-light col-12 climacard__button" id="btn-detalle-${lugar.num}" href="#">Detalles</a>
                 </div>
             </article>
         `;
