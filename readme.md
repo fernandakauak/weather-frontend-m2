@@ -13,7 +13,7 @@
   Espero que les guste y cualquier duda que tengan, así como el resultado final de la revisión, me la pueden hacer llegar directamente.
 
 
-  ## Con respecto al repositorio
+  ## Descarga
   - Este se va a subir como ZIP al Aula Digital, pero también pueden acceder en el siguiente link:
   <https://github.com/fernandakauak/weather-frontend-m2.git>
   - También pueden verlo en acción aquí:
