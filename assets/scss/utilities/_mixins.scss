@@ -1,0 +1,30 @@
+@use '../utilities/variables' as vari;
+
+@mixin card($fondo) {
+  background: vari.$fondo;
+  padding: vari.$padding-mini;
+  text-align: vari.$aligncenter;
+  font-weight: bold;
+  border-radius: vari.$radio;
+}
+
+@mixin siteTitle($displaytext) {
+  font-family: vari.$displaytext;
+  color: vari.$blanco;
+  text-align: vari.$aligncenter;
+  margin: vari.$mtopbottom;
+}
+
+@mixin cardTitle($blanco) {
+  font-family: vari.$displaytext;
+  color: vari.$blanco;
+  text-align: vari.$aligncenter;
+}
+
+@mixin grade($blanco) {
+  color: vari.$blanco;
+  font-size: vari.$gradetxt;
+  background-color: vari.$featured;
+  width: 100%;
+  text-align: vari.$aligncenter;
+}

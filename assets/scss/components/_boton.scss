@@ -1,0 +1,10 @@
+@use '../utilities/variables' as vari;
+@use '../utilities/mixins' as mixi;
+
+.climacard__button {
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: vari.$buttontxt;
+  background-color: vari.$primary;
+  border: 1px solid vari.$secondary;
+}

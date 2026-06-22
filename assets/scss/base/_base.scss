@@ -1,0 +1,6 @@
+@use '../utilities/variables' as vari;
+
+.body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: vari.$primary;
+}

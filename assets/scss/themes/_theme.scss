@@ -1,0 +1,7 @@
+@use '../utilities/variables' as vari;
+@use '../utilities/mixins' as mixi;
+
+.navbar__brand {
+    font-family: vari.$displaytext;
+    color: vari.$brand;
+}

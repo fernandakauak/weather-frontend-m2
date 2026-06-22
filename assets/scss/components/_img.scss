@@ -1,0 +1,23 @@
+@use '../utilities/variables' as vari;
+@use '../utilities/mixins' as mixi;
+
+img {
+    padding: 2%;
+    width: 100%;
+}
+
+.climacard__ico {
+    font-size: vari.$icosize;
+}
+
+.detail__ico {
+    font-size: vari.$icosize;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+.about__img {
+  width: 100%;
+  padding: 1%;
+}
+}

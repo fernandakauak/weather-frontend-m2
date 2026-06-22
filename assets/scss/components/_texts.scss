@@ -1,0 +1,63 @@
+@use '../utilities/variables' as vari;
+@use '../utilities/mixins' as mixi;
+@use '../vendors/googlefont';
+
+
+.container__title {
+  @include mixi.siteTitle(vari.$displaytext);
+}
+
+.container__subtitle {
+  @include mixi.siteTitle(vari.$bodytext);
+}
+
+.forecast__title {
+  @include mixi.cardTitle(vari.$secondary);
+}
+
+.climacard__title, .detalle__title {
+  @include mixi.cardTitle(vari.$blanco);
+}
+
+.forecast__grade {
+  color: vari.$secondary;
+  font-weight: bold;
+}
+
+.detail__title {
+  @include mixi.siteTitle(vari.$displaytext);
+}
+
+.about__info {
+  background-color: vari.$blanco;
+  padding: 2%;
+  font-size: vari.$tamanotxt;
+}
+
+
+.forecast__grade {
+  @include mixi.grade(vari.$secondary);
+  font-weight: bold;
+}
+
+.climacard__grado {
+  @include mixi.grade(vari.$blanco);
+  margin: 2% auto;
+  padding: 2%;
+}
+
+.detail__grade {
+  @include mixi.grade(vari.$blanco);
+  margin: 2% auto;
+  padding: 2%;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+.detail__info {
+  border-left: 0;
+  border-right: 0;
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+  }
+}
