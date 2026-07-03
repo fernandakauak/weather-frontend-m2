@@ -14,7 +14,8 @@ $(document).ready(function () {
         <div class="col-sm-12 col-md-4 detail__info">
             <h2 class="detail__title">Clima</h2>
             <div class="detail__ico">${lugarDatos.ico}</div>
-            <h3 class="detail__grade">${lugarDatos.clima}</h3>
+            <h3 class="detail__grade">${lugarDatos.climaActual}</h3>
+            <h3 class="detail__title">${lugarDatos.estadoActual}</h3>
         </div>
 
         <div class="col-sm-12 col-md-4 detail__info">
@@ -30,13 +31,15 @@ $(document).ready(function () {
         </div>
 
         <h2 class="container__title">Pronóstico Semana</h2>
+        <h3 class="container__title">Promedio de máxima de laa semana: ${lugarDatos.nombre}</h3>
+        
         <aside class="card col-sm-12 col-md-4 card-body forecast__card">
             <h3 class="forecast__title">Martes</h3>
             <h3 class="forecast__grade">${lugarDatos.martes}</h3>
         </aside>
         <aside class="card col-sm-12 col-md-4 card-body forecast__card">
             <h3 class="forecast__title">Miércoles</h3>
-            <h3 class="forecast__grade">${lugarDatos.miercoles}</h3>
+            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal.miercoles}</h3>
         </aside>
         <aside class="card col-sm-12 col-md-4 card-body forecast__card">
             <h3 class="forecast__title">Jueves</h3>

@@ -19,6 +19,10 @@
   @include mixi.cardTitle(vari.$blanco);
 }
 
+.climacard__estado {
+  @include mixi.estadoClima(vari.$blanco);
+}
+
 .forecast__grade {
   color: vari.$secondary;
   font-weight: bold;

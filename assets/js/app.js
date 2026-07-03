@@ -3,17 +3,105 @@ $(document).ready(function () {
     /* ARRAY CON INFORMACIÓN DE LAS CIUDADES */
     const contenedor = document.getElementById('lugares-clima');
     const lugares = [
-        { num: "1", nombre: "Santiago, Chile", ico: "☁️", humedad: "66%", viento:"20kms/h", clima: "18°C", martes: "20°C", miercoles: "16°C", jueves: "18°C", viernes: "20°C", sabado: "16°C", domingo: "16°C" },
-        { num: "2", nombre: "Osorno, Chile", ico: "🌧️", humedad: "85%", viento:"50kms/h", clima: "7°C", martes: "5°C", miercoles: "8°C", jueves: "8°C", viernes: "9°C", sabado: "5°C", domingo: "7°C" },
-        { num: "3", nombre: "Reñaca, Chile", ico: "⛅", humedad: "70%", viento:"30kms/h", clima: "15°C", martes: "18°C", miercoles: "16°C", jueves: "13°C", viernes: "10°C", sabado: "15°C", domingo: "16°C" },
-        { num: "4", nombre: "Panguipulli, Chile", ico: "🌧️", humedad: "87%", viento:"50kms/h", clima: "10°C", martes: "8°C", miercoles: "10°C", jueves: "9°C", viernes: "7°C", sabado: "6°C", domingo: "7°C" },
-        { num: "5", nombre: "Toronto, Canadá", ico: "⛅", humedad: "60%", viento:"40kms/h", clima: "10°C", martes: "13°C", miercoles: "16°C", jueves: "12°C", viernes: "15°C", sabado: "16°C", domingo: "15°C" },
-        { num: "6", nombre: "Londres, Inglaterra", ico: "🌧️", humedad: "78%", viento:"40kms/h", clima: "20°C", martes: "21°C", miercoles: "18°C", jueves: "17°C", viernes: "19°C", sabado: "16°C", domingo: "19°C" },
-        { num: "7", nombre: "Melbourne, Australia", ico: "☀️", humedad: "35%", viento:"20kms/h", clima: "25°C", martes: "27°C", miercoles: "26°C", jueves: "28°C", viernes: "23°C", sabado: "26°C", domingo: "25°C" },
-        { num: "8", nombre: "Kioto, Japón", ico: "☀️", humedad: "56%", viento:"26kms/h", clima: "20°C", martes: "21°C", miercoles: "20°C", jueves: "23°C", viernes: "22°C", sabado: "20°C", domingo: "21°C" },
-        { num: "9", nombre: "Málaga, España", ico: "🌥️", humedad: "56%", viento:"20kms/h", clima: "21°C", martes: "23°C", miercoles: "22°C", jueves: "23°C", viernes: "25°C", sabado: "20°C", domingo: "21°C" },
-        { num: "10", nombre: "Nueva York, EEUU", ico: "☁️", humedad: "76%", viento:"30kms/h", clima: "10°C", martes: "11°C", miercoles: "10°C", jueves: "13°C", viernes: "10°C", sabado: "9°C", domingo: "11°C" },
-        { num: "11", nombre: "Alguna Parte, Alfa Centauro", humedad: "0%", viento:"1500kms/h", ico: "🌥️", clima: "0°C", martes: "0°C", miercoles: "0°C", jueves: "0°C", viernes: "0°C", sabado: "0°C", domingo: "0°C" }
+        { id: "1", nombre: "Santiago, Chile", ico: "☁️", humedad: "66%", viento:"20kms/h", climaActual: "18°C", estadoActual: "Nublado",
+            pronosticoSemanal: [
+                { dia: "martes", min: "6°C", max: "20°C", estado: "Nubosidad Parcial" },
+                { dia: "miércoles", min: "3°C", max: "16°C", estado: "Nublado" },
+                { dia: "jueves", min: "3°C", max: "18°C", estado: "Nublado" },
+                { dia: "viernes", min: "6°C", max: "20°C", estado: "Nubosidad parcial" },
+                { dia: "sábado", min: "8°C", max: "16°C", estado: "Chubascos" },
+                { dia: "domingo", min: "7°C", max: "16°C", estado: "Nublado" }
+            ]},
+        { id: "2", nombre: "Osorno, Chile", ico: "🌧️", humedad: "85%", viento:"50kms/h", climaActual: "7°C", estadoActual: "Chubascos",
+            pronosticoSemanal: [
+                { dia: "martes", min: "-1°C", max: "5°C", estado: "Chubascos-Granizo" },
+                { dia: "miércoles", min: "0°C", max: "8°C", estado: "Nublado" },
+                { dia: "jueves", min: "0°C", max: "8°C", estado: "Chubascos" },
+                { dia: "viernes", min: "1°C", max: "9°C", estado: "Chubascos" },
+                { dia: "sábado", min: "-2°C", max: "5°C", estado: "Nublado" },
+                { dia: "domingo", min: "1°C", max: "7°C", estado: "Nublado" }
+            ]},
+        { id: "3", nombre: "Reñaca, Chile", ico: "⛅", humedad: "70%", viento:"30kms/h", climaActual: "15°C", estadoActual: "Nubosidad Parcial",
+            pronosticoSemanal: [
+                { dia: "martes", min: "5°C", max: "18°C", estado: "Soleado" },
+                { dia: "miércoles", min: "6°C", max: "16°C", estado: "Soleado" },
+                { dia: "jueves", min: "6°C", max: "13°C", estado: "Nubosidad Parcial" },
+                { dia: "viernes", min: "5°C", max: "10°C", estado: "Nublado" },
+                { dia: "sábado", min: "6°C", max: "15°C", estado: "Nublado" },
+                { dia: "domingo", min: "6°C", max: "16°C", estado: "Nublado" }
+            ]},
+        { id: "4", nombre: "Panguipulli, Chile", ico: "🌧️", humedad: "87%", viento:"50kms/h", climaActual: "10°C", estadoActual: "Chubascos",
+            pronosticoSemanal: [
+                { dia: "martes", min: "-1°C", max: "8°C", estado: "Chubascos" },
+                { dia: "miércoles", min: "-2°C", max: "10°C", estado: "Chubascos" },
+                { dia: "jueves", min: "0°C", max: "9°C", estado: "Chubascos" },
+                { dia: "viernes", min: "3°C", max: "7°C", estado: "Nublado" },
+                { dia: "sábado", min: "1°C", max: "6°C", estado: "Nublado" },
+                { dia: "domingo", min: "1°C", max: "7°C", estado: "Chubascos" }
+            ]},
+        { id: "5", nombre: "Toronto, Canadá", ico: "⛅", humedad: "60%", viento:"40kms/h", climaActual: "10°C", estadoActual: "Nubosidad Parcial",
+            pronosticoSemanal: [
+                { dia: "martes", min: "7°C", max: "13°C", estado: "Nubosidad Parcial" },
+                { dia: "miércoles", min: "8°C", max: "16°C", estado: "Nublado" },
+                { dia: "jueves", min: "6°C", max: "12°C", estado: "Nubosidad Parcial" },
+                { dia: "viernes", min: "8°C", max: "15°C", estado: "Soleado" },
+                { dia: "sábado", min: "7°C", max: "16°C", estado: "Soleado" },
+                { dia: "domingo", min: "8°C", max: "15°C", estado: "Nubosidad Parcial" }
+            ]},
+        { id: "6", nombre: "Londres, Inglaterra", ico: "🌧️", humedad: "78%", viento:"40kms/h", climaActual: "20°C", estadoActual: "Chubascos",
+            pronosticoSemanal: [
+                { dia: "martes", min: "5°C", max: "21°C", estado: "Chubascos" },
+                { dia: "miércoles", min: "0°C", max: "18°C", estado: "Nublado" },
+                { dia: "jueves", min: "6°C", max: "17°C", estado: "Chubascos" },
+                { dia: "viernes", min: "4°C", max: "19°C", estado: "Chubascos" },
+                { dia: "sábado", min: "8°C", max: "16°C", estado: "Chubascos" },
+                { dia: "domingo", min: "7°C", max: "19°C", estado: "Nublado" }
+            ]},
+        { id: "7", nombre: "Melbourne, Australia", ico: "☀️", humedad: "35%", viento:"20kms/h", climaActual: "25°C", estadoActual: "Soleado",
+            pronosticoSemanal: [
+                { dia: "martes", min: "-1°C", max: "27°C", estado: "Soleado" },
+                { dia: "miércoles", min: "0°C", max: "26°C", estado: "Soleado" },
+                { dia: "jueves", min: "0°C", max: "28°C", estado: "Nubosidad Parcial" },
+                { dia: "viernes", min: "1°C", max: "23°C", estado: "Soleado" },
+                { dia: "sábado", min: "-2°C", max: "26°C", estado: "Nubosidad Parcial" },
+                { dia: "domingo", min: "1°C", max: "25°C", estado: "Soleado" }
+            ]},
+        { id: "8", nombre: "Kioto, Japón", ico: "☀️", humedad: "56%", viento:"26kms/h", climaActual: "20°C", estadoActual: "Soleado",
+            pronosticoSemanal: [
+                { dia: "martes", min: "7°C", max: "21°C", estado: "Soleado" },
+                { dia: "miércoles", min: "6°C", max: "20°C", estado: "Soleado" },
+                { dia: "jueves", min: "8°C", max: "23°C", estado: "Nubosidad Parcial" },
+                { dia: "viernes", min: "6°C", max: "22°C", estado: "Soleado" },
+                { dia: "sábado", min: "7°C", max: "20°C", estado: "Nubosidad Parcial" },
+                { dia: "domingo", min: "6°C", max: "21°C", estado: "Nubosidad Parcial" }
+            ]},
+        { id: "9", nombre: "Málaga, España", ico: "🌥️", humedad: "56%", viento:"20kms/h", climaActual: "21°C", estadoActual: "Nubosidad Parcial",
+            pronosticoSemanal: [
+                { dia: "martes", min: "10°C", max: "23°C", estado: "Nubosidad Parcial" },
+                { dia: "miércoles", min: "8°C", max: "22°C", estado: "Soleado" },
+                { dia: "jueves", min: "8°C", max: "23°C", estado: "Soleado" },
+                { dia: "viernes", min: "7°C", max: "25°C", estado: "Nubosidad Parcial" },
+                { dia: "sábado", min: "10°C", max: "20°C", estado: "Nubosidad Parcial" },
+                { dia: "domingo", min: "9°C", max: "21°C", estado: "Nubosidad Parcial" }
+            ]}, 
+        { id: "10", nombre: "Nueva York, EEUU", ico: "☁️", humedad: "76%", viento:"30kms/h", climaActual: "10°C", estadoActual: "Nublado",
+            pronosticoSemanal: [
+                { dia: "martes", min: "1°C", max: "11°C", estado: "Nublado" },
+                { dia: "miércoles", min: "0°C", max: "10°C", estado: "Nublado" },
+                { dia: "jueves", min: "2°C", max: "13°C", estado: "Chubascos" },
+                { dia: "viernes", min: "0°C", max: "10°C", estado: "Nublado" },
+                { dia: "sábado", min: "2°C", max: "9°C", estado: "Nublado" },
+                { dia: "domingo", min: "1°C", max: "11°C", estado: "Chubascos" }
+            ]},
+        { id: "11", nombre: "Alguna Parte, Alfa Centauro", humedad: "0%", viento:"1500kms/h", ico: "🌥️", climaActual: "0°C", estadoActual: "Nebulosidad Parcial",
+            pronosticoSemanal: [
+                { dia: "martes", min: "0°C", max: "0°C", estado: "Lluvia de Meteoritos" },
+                { dia: "miércoles", min: "0°C", max: "0°C", estado: "Visita Interplanetaria" },
+                { dia: "jueves", min: "0°C", max: "0°C", estado: "Nebulosidad Parcial" },
+                { dia: "viernes", min: "0°C", max: "0°C", estado: "Nebulosidad Parcial" },
+                { dia: "sábado", min: "0°C", max: "0°C", estado: "Clases de Tap" },
+                { dia: "domingo", min: "0°C", max: "0°C", estado: "Clases de Flamenco" }
+            ]},
     ];
 
     /* MULTIPLICAR CARD SIN REPETIR HTML */
@@ -23,8 +111,9 @@ $(document).ready(function () {
                 <div class="card-body text-center climacard__body">
                     <h2 class="card-title climacard__title">${lugar.nombre}</h2>
                     <div class="climacard__ico">${lugar.ico}</div>
-                    <h3 class="climacard__grado">${lugar.clima}</h3>
-                    <a type="button" class="btn btn-outline-light col-12 climacard__button" id="btn-detalle-${lugar.num}" href="#">Detalles</a>
+                    <h3 class="climacard__grado">${lugar.climaActual}</h3>
+                    <h4 class="climacard__estado">${lugar.estadoActual}</h3>
+                    <a type="button" class="btn btn-outline-light col-12 climacard__button" id="btn-detalle-${lugar.id}" href="#">Detalles</a>
                 </div>
             </article>
         `;
@@ -32,7 +121,7 @@ $(document).ready(function () {
 
     /* TOMAR INFORMACIÓN Y APRETAR BOTÓN PARA IR A DETALLE.HTML */
     lugares.forEach(lugar => {
-         $(`#btn-detalle-${lugar.num}`).click(function(){
+         $(`#btn-detalle-${lugar.id}`).click(function(){
             const lugarElegido = lugar;
             localStorage.setItem("lugarElegido", JSON.stringify(lugarElegido));
             window.location.href = 'detalle.html';
