@@ -11,6 +11,10 @@
   @include mixi.siteTitle(vari.$bodytext);
 }
 
+.container__promedio {
+  @include mixi.promedioClima(vari.$bodytext);
+}
+
 .forecast__title {
   @include mixi.cardTitle(vari.$secondary);
 }
@@ -38,7 +42,6 @@
   font-size: vari.$tamanotxt;
 }
 
-
 .forecast__grade {
   @include mixi.grade(vari.$secondary);
   font-weight: bold;
@@ -54,6 +57,10 @@
   @include mixi.grade(vari.$blanco);
   margin: 2% auto;
   padding: 2%;
+}
+
+.detail__estado {
+  @include mixi.estadoClima(vari.$blanco);
 }
 
 /* MEDIA QUERIES */

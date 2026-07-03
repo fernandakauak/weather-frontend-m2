@@ -15,7 +15,7 @@ $(document).ready(function () {
             <h2 class="detail__title">Clima</h2>
             <div class="detail__ico">${lugarDatos.ico}</div>
             <h3 class="detail__grade">${lugarDatos.climaActual}</h3>
-            <h3 class="detail__title">${lugarDatos.estadoActual}</h3>
+            <h3 class="detail__estado">${lugarDatos.estadoActual}</h3>
         </div>
 
         <div class="col-sm-12 col-md-4 detail__info">
@@ -31,32 +31,37 @@ $(document).ready(function () {
         </div>
 
         <h2 class="container__title">Pronóstico Semana</h2>
-        <h3 class="container__title">Promedio de máxima de laa semana: ${lugarDatos.nombre}</h3>
-        
+        <h3 class="container__promedio">Promedio de máxima de la semana: ${lugarDatos.nombre}</h3>
+
         <aside class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">Martes</h3>
-            <h3 class="forecast__grade">${lugarDatos.martes}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[0].dia}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[0].estado}</h3>
+            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[0].min} / ${lugarDatos.pronosticoSemanal[0].max}</h3>
         </aside>
         <aside class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">Miércoles</h3>
-            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal.miercoles}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[1].dia}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[1].estado}</h3>
+            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[1].min} / ${lugarDatos.pronosticoSemanal[1].max}</h3>
         </aside>
         <aside class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">Jueves</h3>
-            <h3 class="forecast__grade">${lugarDatos.jueves}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[2].dia}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[2].estado}</h3>
+            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[2].min} / ${lugarDatos.pronosticoSemanal[2].max}</h3>
         </aside>
         <aside class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">Viernes</h3>
-            <h3 class="forecast__grade">${lugarDatos.viernes}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[3].dia}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[3].estado}</h3>
+            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[3].min} / ${lugarDatos.pronosticoSemanal[3].max}</h3>
         </aside>
         <aside class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">Sábado</h3>
-            <h3 class="forecast__grade">${lugarDatos.sabado}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[4].dia}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[4].estado}</h3>
+            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[4].min} / ${lugarDatos.pronosticoSemanal[4].max}</h3>
         </aside>
         <aside class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">Domingo</h3>
-            <h3 class="forecast__grade">${lugarDatos.domingo}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[5].dia}</h3>
+            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[5].estado}</h3>
+            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[5].min} / ${lugarDatos.pronosticoSemanal[5].max}</h3>
         </aside>
     `; 
-    
 });

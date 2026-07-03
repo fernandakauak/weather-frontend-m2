@@ -40,6 +40,12 @@
   margin: 3px auto;
 }
 
+.container__promedio {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
 .forecast__title {
   font-family: "Titan One", sans-serif;
   color: rgb(255, 255, 255);
@@ -103,6 +109,12 @@
   text-align: center;
   margin: 2% auto;
   padding: 2%;
+}
+
+.detail__estado {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
 }
 
 /* MEDIA QUERIES */

@@ -27,6 +27,12 @@
   text-align: vari.$aligncenter;
 }
 
+@mixin promedioClima($blanco) {
+  font-family: vari.$bodytext;
+  color: vari.$blanco;
+  text-align: vari.$aligncenter;
+}
+
 @mixin grade($blanco) {
   color: vari.$blanco;
   font-size: vari.$gradetxt;
