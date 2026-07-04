@@ -11,8 +11,9 @@
   @include mixi.siteTitle(vari.$bodytext);
 }
 
-.container__promedio {
+.promedio__title {
   @include mixi.siteTitle(vari.$displaytext);
+  margin: 5% 0 2%;
 }
 
 .forecast__title {
@@ -71,12 +72,20 @@
   @include mixi.cardTitle(vari.$secondary);
 }
 
-.summary__state {
+.grado__title, .estado__title {
+  @include mixi.siteTitle(vari.$displaytext);
+}
+
+.grado__text, .estado__text {
   @include mixi.estadoClima(vari.$blanco);
 }
 
-.summary__grade {
-  @include mixi.siteTitle(vari.$displaytext);
+.estado__todo {
+  @include mixi.cardTitle(vari.$secondary);
+}
+
+.estado__texto {
+  @include mixi.siteTitle(vari.$bodytext);
 }
 
 /* MEDIA QUERIES */

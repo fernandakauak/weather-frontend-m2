@@ -1,6 +1,11 @@
 @use '../utilities/variables' as vari;
 @use '../utilities/mixins' as mixi;
 
+
+.promedio__section {
+  display: flex;
+}
+
 .forecast__card {
   @include mixi.card(vari.$card);
   display: grid;
@@ -8,20 +13,25 @@
   grid-template-rows: 30%;
 }
 
-.summary__card {
+.promedio__grados {
   @include mixi.card(vari.$card);
   display: grid;
   gap: 5px;
   grid-template-rows: 30%;
 }
 
+.promedio__estado {
+  @include mixi.card(vari.$card);
+}
+
 .detail__info {
-  border-left: 1px solid rgb(255, 255, 255);
-  border-right: 1px solid rgb(255, 255, 255);
-  border-top: 0;
-  border-bottom: 0;
-  text-align: center;
-  margin-bottom: 5%;
+  @include mixi.detailCard(vari.$card);
+  display: grid;
+  gap: 5px;
+}
+
+.promedio__min, .promedio__max, .promedio__todo {
+  @include mixi.detailCard(vari.$info);
   display: grid;
   gap: 5px;
 }
