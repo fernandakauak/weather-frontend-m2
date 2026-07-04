@@ -3,6 +3,7 @@
   ## Índice
   - Con respecto al repositorio
   - Links de descarga y vista
+  - Actualización 04-07-2026
   - Actualización 21-06-2026
   
   ## Con respecto al repositorio
@@ -22,6 +23,21 @@
   ### ¡Que tengan una buena semana!
 
   ---
+  ---
+
+  ## Actualización 04-07-2026: Versión Portafolio - Módulo 4
+  Se añadieron las siguientes funciones:
+  1. Primero se modificó el arreglo **lugares** (ubicado en app.js) para desplegar nuevos datos: **pronosticoSemanal** contiene un arreglo propio con el día de la semana, la temperatura mínima, la temperatura máxima y el estado (nublado, soleado, etc). Estos datos nuevos van a calcularse usando las funciones mencionadas en los siguientes puntos.
+  2. **Promedio de temperaturas mínimas** de cada ciudad *(uso de parseInt para rescatar el número del string, for para la operación y Math.round para redondear el decimal)*
+  3. **Promedio de temperaturas máximas** de cada ciudad *(se usó lo mismo para el caso anterior)*
+  4. **Promedio de los resultados** de promedios anteriores *(suma simple de los dos resultados anteriores y un Math.round para redondear decimales)*
+  5. Uso de función para *sacar la moda* de los estados de clima de cada ciudad según la semana y **definir cuál es el que se repite**.
+  6. Por medio de una condicional *(if/if else/else)* para entregar un mensaje **según el clima que más se repita**.
+    - El else se usa para los climas de Alfa Centauro, en la aplicación sale como 0°C, pero se usa otros "climas" (básicamente no se sabe qué hay... aún).
+  7. Adaptación de la UI de la sección de **detalles.html** para añadir los elementos nuevos.
+
+  ### Como ven, las actualizaciones recientes irán primero ¡Nos vemos en el siguiente módulo! :smiley_cat:
+
   ---
 
   ## Actualización 21-06-2026: Versión Portafolio - Módulo 3
