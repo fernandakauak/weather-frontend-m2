@@ -12,7 +12,7 @@
   border-radius: 10px;
   display: grid;
   gap: 5px;
-  grid-template-columns: 50% 50%;
+  grid-template-rows: 30%;
 }
 
 .detail__info {
@@ -40,8 +40,20 @@
   margin: 3px auto;
 }
 
+.container__promedio {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
 .forecast__title {
   font-family: "Titan One", sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.forecast__state {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(255, 255, 255);
   text-align: center;
 }
@@ -103,6 +115,12 @@
   text-align: center;
   margin: 2% auto;
   padding: 2%;
+}
+
+.detail__estado {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
 }
 
 /* MEDIA QUERIES */

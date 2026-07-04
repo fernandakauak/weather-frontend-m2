@@ -104,6 +104,10 @@ $(document).ready(function () {
             ]},
     ];
 
+    //let climactual = lugares(climaActual);
+
+
+
     /* MULTIPLICAR CARD SIN REPETIR HTML */
     lugares.forEach(lugar => {
         contenedor.innerHTML += `
@@ -127,4 +131,6 @@ $(document).ready(function () {
             window.location.href = 'detalle.html';
         }); 
     });
+
+    
 });
