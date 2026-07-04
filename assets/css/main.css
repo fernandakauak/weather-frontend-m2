@@ -4,6 +4,10 @@
   background-color: rgb(138, 43, 226);
 }
 
+.promedio__section {
+  display: flex;
+}
+
 .forecast__card {
   background: rgba(85, 17, 82, 0.5);
   padding: 2%;
@@ -15,7 +19,7 @@
   grid-template-rows: 30%;
 }
 
-.summary__card {
+.promedio__grados {
   background: rgba(85, 17, 82, 0.5);
   padding: 2%;
   text-align: center;
@@ -23,7 +27,15 @@
   border-radius: 10px;
   display: grid;
   gap: 5px;
-  grid-template-columns: 30%;
+  grid-template-rows: 30%;
+}
+
+.promedio__estado {
+  background: rgba(85, 17, 82, 0.5);
+  padding: 2%;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px;
 }
 
 .detail__info {
@@ -33,6 +45,19 @@
   border-bottom: 0;
   text-align: center;
   margin-bottom: 5%;
+  background-color: rgba(85, 17, 82, 0.5);
+  display: grid;
+  gap: 5px;
+}
+
+.promedio__min, .promedio__max, .promedio__todo {
+  border-left: 1px solid rgb(255, 255, 255);
+  border-right: 1px solid rgb(255, 255, 255);
+  border-top: 0;
+  border-bottom: 0;
+  text-align: center;
+  margin-bottom: 5%;
+  background-color: rgba(85, 17, 82, 0.5);
   display: grid;
   gap: 5px;
 }
@@ -51,10 +76,12 @@
   margin: 3px auto;
 }
 
-.container__promedio {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.promedio__title {
+  font-family: "Titan One", sans-serif;
   color: rgb(255, 255, 255);
   text-align: center;
+  margin: 3px auto;
+  margin: 5% 0 2%;
 }
 
 .forecast__title {
@@ -132,6 +159,38 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(255, 255, 255);
   text-align: center;
+}
+
+.summary__title {
+  font-family: "Titan One", sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.grado__title, .estado__title {
+  font-family: "Titan One", sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin: 3px auto;
+}
+
+.grado__text, .estado__text {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.estado__todo {
+  font-family: "Titan One", sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.estado__texto {
+  font-family: "Titan One", sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin: 3px auto;
 }
 
 /* MEDIA QUERIES */
