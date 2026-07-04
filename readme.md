@@ -31,10 +31,10 @@
   2. **Promedio de temperaturas mínimas** de cada ciudad *(uso de parseInt para rescatar el número del string, for para la operación y Math.round para redondear el decimal)*
   3. **Promedio de temperaturas máximas** de cada ciudad *(se usó lo mismo para el caso anterior)*
   4. **Promedio de los resultados** de promedios anteriores *(suma simple de los dos resultados anteriores y un Math.round para redondear decimales)*
-  5. Uso de función para *sacar la moda* de los estados de clima de cada ciudad según la semana y **definir cuál es el que se repite**.
-  6. Por medio de una condicional *(if/if else/else)* para entregar un mensaje **según el clima que más se repita**.
-    - El else se usa para los climas de Alfa Centauro, en la aplicación sale como 0°C, pero se usa otros "climas" (básicamente no se sabe qué hay... aún).
-  7. Adaptación de la UI de la sección de **detalles.html** para añadir los elementos nuevos.
+  5. Uso de función para *sacar la moda* de los estados de clima de cada ciudad según la semana y **definir cuál es el que se repite**. Esta recorre un arreglo creado con los estados de la semana y se puede aplicar en todas las ciudades por medio de los forEach ya creados.
+  6. Por medio de una condicional *(if/if else/else)* para entregar un mensaje **según el clima que más se repita**. Hay 4 casos de clima: Soleado, nubosidad parcial, nublado y chubascos.
+    - El else se usa para los climas de Alfa Centauro, en la aplicación sale como 0°C, pero se usa otros "climas" (básicamente para graficar que no se sabe qué hay... aún).
+  7. Adaptación de la UI de la sección de **detalles.html** para añadir los elementos nuevos. Se ubican debajo de todos los climas desplegados con los datos nuevos del array mencionado al inicio.
 
   ### Como ven, las actualizaciones recientes irán primero ¡Nos vemos en el siguiente módulo! :smiley_cat:
 
