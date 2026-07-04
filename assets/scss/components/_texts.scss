@@ -12,7 +12,7 @@
 }
 
 .container__promedio {
-  @include mixi.promedioClima(vari.$bodytext);
+  @include mixi.siteTitle(vari.$displaytext);
 }
 
 .forecast__title {
@@ -65,6 +65,18 @@
 
 .detail__estado {
   @include mixi.estadoClima(vari.$blanco);
+}
+
+.summary__title {
+  @include mixi.cardTitle(vari.$secondary);
+}
+
+.summary__state {
+  @include mixi.estadoClima(vari.$blanco);
+}
+
+.summary__grade {
+  @include mixi.siteTitle(vari.$displaytext);
 }
 
 /* MEDIA QUERIES */

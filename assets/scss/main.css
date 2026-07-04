@@ -15,6 +15,17 @@
   grid-template-rows: 30%;
 }
 
+.summary__card {
+  background: rgba(85, 17, 82, 0.5);
+  padding: 2%;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px;
+  display: grid;
+  gap: 5px;
+  grid-template-rows: 30%;
+}
+
 .detail__info {
   border-left: 1px solid rgb(255, 255, 255);
   border-right: 1px solid rgb(255, 255, 255);
@@ -41,9 +52,10 @@
 }
 
 .container__promedio {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Titan One", sans-serif;
   color: rgb(255, 255, 255);
   text-align: center;
+  margin: 3px auto;
 }
 
 .forecast__title {
@@ -121,6 +133,25 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(255, 255, 255);
   text-align: center;
+}
+
+.summary__title {
+  font-family: "Titan One", sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.summary__state {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.summary__grade {
+  font-family: "Titan One", sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin: 3px auto;
 }
 
 /* MEDIA QUERIES */

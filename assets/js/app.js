@@ -14,7 +14,7 @@ $(document).ready(function () {
             ]},
         { id: "2", nombre: "Osorno, Chile", ico: "🌧️", humedad: "85%", viento:"50kms/h", climaActual: "7°C", estadoActual: "Chubascos",
             pronosticoSemanal: [
-                { dia: "martes", min: "-1°C", max: "5°C", estado: "Chubascos-Granizo" },
+                { dia: "martes", min: "-1°C", max: "5°C", estado: "Chubascos" },
                 { dia: "miércoles", min: "0°C", max: "8°C", estado: "Nublado" },
                 { dia: "jueves", min: "0°C", max: "8°C", estado: "Chubascos" },
                 { dia: "viernes", min: "1°C", max: "9°C", estado: "Chubascos" },
@@ -93,7 +93,7 @@ $(document).ready(function () {
                 { dia: "sábado", min: "2°C", max: "9°C", estado: "Nublado" },
                 { dia: "domingo", min: "1°C", max: "11°C", estado: "Chubascos" }
             ]},
-        { id: "11", nombre: "Alguna Parte, Alfa Centauro", humedad: "0%", viento:"1500kms/h", ico: "🌥️", climaActual: "0°C", estadoActual: "Nebulosidad Parcial",
+        { id: "11", nombre: "Alguna Parte, Alfa Centauro", humedad: "0%", viento:"1500kms/h", ico: "🪐", climaActual: "0°C", estadoActual: "Nebulosidad Parcial",
             pronosticoSemanal: [
                 { dia: "martes", min: "0°C", max: "0°C", estado: "Lluvia de Meteoritos" },
                 { dia: "miércoles", min: "0°C", max: "0°C", estado: "Visita Interplanetaria" },
@@ -103,9 +103,6 @@ $(document).ready(function () {
                 { dia: "domingo", min: "0°C", max: "0°C", estado: "Clases de Flamenco" }
             ]},
     ];
-
-    //let climactual = lugares(climaActual);
-
 
 
     /* MULTIPLICAR CARD SIN REPETIR HTML */
@@ -132,5 +129,4 @@ $(document).ready(function () {
         }); 
     });
 
-    
 });

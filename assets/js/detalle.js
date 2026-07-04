@@ -8,11 +8,43 @@ $(document).ready(function () {
     const detallesCiudad = lugarElegido;
 
     /* PROMEDIOS: MÍNIMO, MÁXIMO Y TODO */
-    let promedioMin = (parseInt(lugarDatos.pronosticoSemanal[0].min) + parseInt(lugarDatos.pronosticoSemanal[1].min) + parseInt(lugarDatos.pronosticoSemanal[2].min)) / 3;
+    let promedioMin = Math.round((parseInt(lugarDatos.pronosticoSemanal[0].min) + parseInt(lugarDatos.pronosticoSemanal[1].min) + parseInt(lugarDatos.pronosticoSemanal[2].min)) / 3);
 
-    let promedioMax  = (parseInt(lugarDatos.pronosticoSemanal[0].max) + parseInt(lugarDatos.pronosticoSemanal[1].max) + parseInt(lugarDatos.pronosticoSemanal[2].max)) / 3;
+    let promedioMax  = Math.round((parseInt(lugarDatos.pronosticoSemanal[0].max) + parseInt(lugarDatos.pronosticoSemanal[1].max) + parseInt(lugarDatos.pronosticoSemanal[2].max)) / 3);
 
-    let promedioTodo = (promedioMin + promedioMax) / 2;
+    let promedioTodo = Math.round((promedioMin + promedioMax) / 2);
+
+    let estadoClimaCiudad = [lugarDatos.pronosticoSemanal[0].estado, lugarDatos.pronosticoSemanal[1].estado, lugarDatos.pronosticoSemanal[2].estado, lugarDatos.pronosticoSemanal[3].estado, lugarDatos.pronosticoSemanal[4].estado, lugarDatos.pronosticoSemanal[5].estado];
+
+    console.log(estadoClimaCiudad);
+
+    function modaClima(arr){
+        return arr.sort((a,b) =>
+            arr.filter(v => v===a).length
+            - arr.filter(v => v===b).length
+        ).pop();
+    }
+
+    let modaClimaCiudad = modaClima(estadoClimaCiudad);
+
+    function resumenClima() {
+        if (modaClimaCiudad === "Soleado"){
+            return `☀️ Como calienta el sol en tu ciudad`
+        } else if (modaClimaCiudad === "Nubosidad Parcial"){
+            return `⛅ Algo tranquilo para esta temporada`
+        } else if (modaClimaCiudad === "Nublado") {
+            return `☁️ Está nubladito`
+        } else if (modaClimaCiudad === "Chubascos"){
+            return `🌧️ Esta tarde vi llover, vi gente correr...`
+        } else {
+            return `🪐 No sé tú pero yo no sé donde estamos.`
+        }
+    }
+    
+
+    let resumenClimaCiudad = resumenClima()
+    console.log(resumenClimaCiudad);
+
 
     /* COLOCAR EN ESTRUCTURA HTML */
     /* ESTRUCTURA: TÍTULO (CON NOMBRE LUGAR), CLIMA, HUMEDAD, VELOCIDAD DE VIENTO Y PRONÓSTICO PARA EL RESTO DE LA SEMANA */
@@ -76,11 +108,18 @@ $(document).ready(function () {
     detallesEstadisticaSemana.innerHTML += `
         <h3 class="container__promedio">Promedio de máxima de la semana: ${lugarDatos.nombre}</h3>
 
-        <aside class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">Mínimo de la semana: ${promedioMin}</h3>
-            <h3 class="forecast__state">Máximo de la semana: ${promedioMax}</h3>
-            <h3 class="forecast__grade">Promedio de la semana: ${promedioTodo}</h3>
+        <aside class="summary__card">
+            <h3 class="summary__state">Mínimo de la semana: ${promedioMin}</h3>
+            <h3 class="summary__state">Máximo de la semana: ${promedioMax}</h3>
+            <h3 class="summary__grade">Promedio de la semana: ${promedioTodo}</h3>
         </aside>
 
+        <aside class="summary__card">
+            <h3 class="summary__state">Clima más repetido: ${modaClimaCiudad}</h3>
+            <h3 class="summary__state">Consideración para este clima: ${resumenClimaCiudad}</h3>           
+        </aside>
+
+
+        
     `; 
 });
