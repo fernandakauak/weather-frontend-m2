@@ -3,6 +3,7 @@
   ## Índice
   - Con respecto al repositorio
   - Links de descarga y vista
+  - AVISO DE ACTUALIZACIÓN EN PROCESO 19-07-2026
   - Actualización 04-07-2026
   - Actualización 21-06-2026
   
@@ -23,6 +24,13 @@
   ### ¡Que tengan una buena semana!
 
   ---
+  ---
+
+  ## AVISO DE ACTUALIZACIÓN EN PROCESO: Versión Portafolio - Módulo 5
+  En estos momentos se está realizando la actualización del portafolio (Versión Módulo 5). Si requiere ver la versión del módulo 4, diríjase a la sección de la tarea en Aula Digital o contáctese personalmente con el autor del repositorio. ¡Saludos y muchas gracias!
+
+   ### ¡Saludos y muchas gracias! :smiley_cat:
+
   ---
 
   ## Actualización 04-07-2026: Versión Portafolio - Módulo 4
