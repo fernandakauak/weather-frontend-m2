@@ -3,7 +3,7 @@
   ## Índice
   - Con respecto al repositorio
   - Links de descarga y vista
-  - AVISO DE ACTUALIZACIÓN EN PROCESO 19-07-2026
+  - Actualización 8-08-2026
   - Actualización 04-07-2026
   - Actualización 21-06-2026
   
@@ -26,10 +26,26 @@
   ---
   ---
 
-  ## AVISO DE ACTUALIZACIÓN EN PROCESO: Versión Portafolio - Módulo 5
-  En estos momentos se está realizando la actualización del portafolio (Versión Módulo 5). Si requiere ver la versión del módulo 4, diríjase a la sección de la tarea en Aula Digital o contáctese personalmente con el autor del repositorio. ¡Saludos y muchas gracias!
+  ## Actualización 04-07-2026: Versión Portafolio - Módulo 5
+  **Antes de empezar:** *De ahora en adelante las actualizaciones del README tendrán imágenes. Si no se ven, pueden verlas en la carpeta img-readme. En el zip que se subirá a la plataforma, estarán en un archivo Word*
+  En esta actualización se añadió lo siguiente:
+  1. Los datos cargados de clima pasaron de ser un array en el archivo app.js a un archivo JSON llamado ***apiprueba.json**, el cuál actua como API de prueba.
+  ![Parte del archivo apiprueba.json](img-readme/jsonapiprueba.png)
 
-   ### ¡Saludos y muchas gracias! :smiley_cat:
+  2. Se creó la clase **ApiClima** para llamar la API con la función asíncrona **FetchData** y cargar en el archivo index.html con la función **cargarLugares**, también asíncrona. Sin embargo, no se pudo replicar lo mismo en la carga de detalle (hubo conflictos de código y prioricé el que se pasara todo a la sección "Detalle").
+![Parte de la clase ApiClima - 1](img-readme/class-1.png)! [Parte de la clase ApiClima - 1](img-readme/class-2.png)
+
+  3. En la función cargarDetalle se añadió una condición para un error consistente en la falta de datos de pronósticoSemanal (parte de la API de prueba). Para mostrar su funcionamiento, **se agregó un sitio nuevo llamado "El Por Qué de las Cosas"** que no lo contiene a propósito y despliega un mensaje de error en console.log y en la pantalla. Lo mismo ocurre cuando se va a la sección **"Detalle"**.
+!["El por qué de las cosas"](img-readme/ciudad-nueva.png) ![Cuando ves sus detalles y llegas a la sección](img-readme/aviso-no-dato.png)! [Cuando ves sus detalles, llegas a la sección y abres la consola](img-readme/aviso-no-dato_consola.png)
+
+  4. En la sección de detalle de cada ciudad, se despliega una sección llamada **"Frecuencia de Climas"**. Aquí se muestra los climas que se repiten y cuánto se repiten y un mensaje personalizado en caso de que uno se repita 4 veces o más. También hay un mensaje cuando hay empates o ninguno de estos climas llegue a las 4 repeticiones.
+  ![Frecuencia de climas y mensaje según repetición](img-readme/frecuenciaclima.png)
+  ![Ejemplo de frase](img-readme/frecuenciaclima-frase.png)
+
+  5. Ahora todos los cálculos relacionados a promedios, frecuencias y modas se encuentran dentro de una función llamada **calcularEstadisticas**. Después de hacerse los cálculos, se liberan los valores usando un return para que no queden como funciones locales.
+  ![Parte de la función cargarEstadisticas](img-readme/estadisticas.png)
+  
+   ### ¡Saludos y muchas gracias! La próxima actualización será más eficiente :smiley_cat:
 
   ---
 

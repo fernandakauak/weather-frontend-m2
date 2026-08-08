@@ -9,6 +9,7 @@ function reuneInformacion() {
     return lugarDatos;
 }
 
+// CALCULO DE ESTADÍSTICAS PARA PROMEDIOS, FRECUENCIAS Y MODAS
 function calcularEstadisticas(pronosticoSemanal) {
     // OPERATORIAS TEMPERATURAS MÍNIMAS: RECOPILAR, SUMAR, SACAR PROMEDIO
     const temperaturasMinimas = pronosticoSemanal.map(dia => {
@@ -20,7 +21,7 @@ function calcularEstadisticas(pronosticoSemanal) {
         }, 0
     );
 
-    const promedioMinCiudad = sumaMinimas / temperaturasMinimas.length;
+    const promedioMinCiudad = Math.round(sumaMinimas / temperaturasMinimas.length);
 
     // OPERATORIAS TEMPERATURAS MÍNIMAS: RECOPILAR, SUMAR, SACAR PROMEDIO
     const temperaturasMaximas = pronosticoSemanal.map(dia => {
@@ -32,7 +33,7 @@ function calcularEstadisticas(pronosticoSemanal) {
         }, 0
     );
 
-    const promedioMaxCiudad = sumaMaximas / temperaturasMaximas.length;
+    const promedioMaxCiudad = Math.round(sumaMaximas / temperaturasMaximas.length);
 
     // OPERATORIAS PROMEDIO TEMPERATURAS: RECOPILAR, SUMAR, SACAR PROMEDIO 
     const todasTemperaturas = [ ...temperaturasMinimas, ...temperaturasMaximas ];
@@ -42,7 +43,8 @@ function calcularEstadisticas(pronosticoSemanal) {
         }, 0
     );
 
-    const promedioTodoCiudad = sumaTotal / todasTemperaturas.length;
+    const promedioTodoCiudad = Math.round(sumaTotal / todasTemperaturas.length);
+
 
     // MODA DE CLIMA PARA MENSAJE PERSONALIZADO
     const contadorEstados = {};
@@ -89,26 +91,22 @@ function calcularEstadisticas(pronosticoSemanal) {
     .map(([estado, conteo]) => `${estado}: ${conteo} veces`)
     .join(" - ");
 
-    const climaRepetido = Object.keys(climasSemana).filter(clima => climasSemana[clima] >= 3);
-
-    console.log(climaRepetido);
+    const climaRepetido = Object.keys(climasSemana).filter(clima => climasSemana[clima] > 3);
 
     let estadoFrecuenciaSemanal = "";
-    if (climaRepetido === "Soleado"){
+    if (climaRepetido == "Soleado"){
         estadoFrecuenciaSemanal = `☀️ Hace mucho calor. Ponte bloqueador y toma mucha agua ¡Y busca la sombra!`
-    } else if (climaRepetido === "Nubosidad Parcial"){
+    } else if (climaRepetido == "Nubosidad Parcial"){
         estadoFrecuenciaSemanal = `⛅ ¿Sol? ¿Nubes? ¡Ambos! Nubosidad parcial, con espacio para un rayito de sol.`
-    } else if (climaRepetido === "Nublado") {
+    } else if (climaRepetido == "Nublado") {
         estadoFrecuenciaSemanal = `☁️ Nubes, nubes y más nubes.`
-    } else if (climaRepetido === "Chubascos"){
+    } else if (climaRepetido == "Chubascos"){
         estadoFrecuenciaSemanal = `🌧️ Mucha lluvia esta semana, el paraguas es tu mejor amigo. ¡No lo olvides!`
     } else {
         estadoFrecuenciaSemanal = `🌌 No hay un claro ganador en esta semana, mantente atento de las señales del clima.`
     }
 
-
-
-
+    // RETURN PARA DEJAR DISPONIBLES LOS VALORES DE FUNCIONES, CONSTANTES Y VARIABLES LOCALES PARA EL RESTO DEL CÓDIGO
     return { promedioMinCiudad, promedioMaxCiudad, promedioTodoCiudad, modaClimaCiudad, resumenClimaCiudad, frecuenciaClimas, estadoFrecuenciaSemanal };
 }
 
@@ -136,7 +134,7 @@ function cargarDetalle(lugarDetalle) {
     // CÁLCULO DE ESTADÍSTICAS    
     const estadisticas = calcularEstadisticas(lugarDetalle.pronosticoSemanal);
 
-    // HTMP DETALLES: PRONÓSTICOS Y ESTADÍSTICAS
+    // HTTP DETALLES: PRONÓSTICOS Y ESTADÍSTICAS
     detallesClimaCiudad.innerHTML = `
         <h1 class="container__title">Pronóstico de la semana: <br/> ${lugarDetalle.nombre}</h1>
         <div class="col-sm-12 col-md-4 detail__info">
@@ -159,7 +157,7 @@ function cargarDetalle(lugarDetalle) {
         </div>
 
         <h2 class="container__title">Pronóstico de la Semana</h2>
-        <h3 class="container__promedio">Promedio de máxima de la semana: ${estadisticas.promedioMaxCiudad.toFixed(1)}°C</h3>
+        <h3 class="container__promedio">Promedio de máxima de la semana: ${estadisticas.promedioMaxCiudad}°C</h3>
 
         <article class="card col-sm-12 col-md-4 card-body forecast__card">
             <h3 class="forecast__title">${lugarDetalle.pronosticoSemanal[0].dia}</h3>
@@ -209,17 +207,17 @@ function cargarDetalle(lugarDetalle) {
             <div class="col-sm-12 promedio__section">
                 <article class="promedio__min col-sm-12 col-md-4">
                     <h3 class="grado__title">Mínimo de la semana:</h3>
-                    <h4 class="grado__text">${estadisticas.promedioMinCiudad.toFixed(1)}°C</h4>
+                    <h4 class="grado__text">${estadisticas.promedioMinCiudad}°C</h4>
                 </article>
 
                 <article class="promedio__max col-sm-12 col-md-4">
                     <h3 class="grado__title">Máximo de la semana:</h3>
-                    <h4 class="grado__text">${estadisticas.promedioMaxCiudad.toFixed(1)}°C</h4>
+                    <h4 class="grado__text">${estadisticas.promedioMaxCiudad}°C</h4>
                 </article>
 
                 <article class="promedio__todo col-sm-12 col-md-4">
                     <h3 class="grado__title">Promedio de la semana:</h3>
-                    <h4 class="grado__text">${estadisticas.promedioTodoCiudad.toFixed(1)}°C</h4>
+                    <h4 class="grado__text">${estadisticas.promedioTodoCiudad}°C</h4>
                 </article>
             </div>
 
@@ -237,6 +235,7 @@ function cargarDetalle(lugarDetalle) {
 const lugar = reuneInformacion();
 
 if (lugar) {
-    console.log("Lugar recuperado:", lugar);
     cargarDetalle(lugar);
+} else {
+    console.log("No hay datos disponibles");
 }
