@@ -79,13 +79,37 @@ function calcularEstadisticas(pronosticoSemanal) {
         resumenClimaCiudad = `🪐 No sé tú pero yo no sé donde estamos... this is Major Tom to Ground Control 🎵`
     }
 
-    return {
-        promedioMinCiudad,
-        promedioMaxCiudad,
-        promedioTodoCiudad,
-        modaClimaCiudad,
-        resumenClimaCiudad
-    };
+    // FRECUENCIA DE CLIMAS
+    let climasSemana = pronosticoSemanal.reduce((acc, pronosticoSemanal) => {
+        acc[pronosticoSemanal.estado] = (acc[pronosticoSemanal.estado] || 0) + 1;
+        return acc;
+    }, {});
+
+    const frecuenciaClimas = Object.entries(climasSemana)
+    .map(([estado, conteo]) => `${estado}: ${conteo} veces`)
+    .join(" - ");
+
+    const climaRepetido = Object.keys(climasSemana).filter(clima => climasSemana[clima] >= 3);
+
+    console.log(climaRepetido);
+
+    let estadoFrecuenciaSemanal = "";
+    if (climaRepetido === "Soleado"){
+        estadoFrecuenciaSemanal = `☀️ Hace mucho calor. Ponte bloqueador y toma mucha agua ¡Y busca la sombra!`
+    } else if (climaRepetido === "Nubosidad Parcial"){
+        estadoFrecuenciaSemanal = `⛅ ¿Sol? ¿Nubes? ¡Ambos! Nubosidad parcial, con espacio para un rayito de sol.`
+    } else if (climaRepetido === "Nublado") {
+        estadoFrecuenciaSemanal = `☁️ Nubes, nubes y más nubes.`
+    } else if (climaRepetido === "Chubascos"){
+        estadoFrecuenciaSemanal = `🌧️ Mucha lluvia esta semana, el paraguas es tu mejor amigo. ¡No lo olvides!`
+    } else {
+        estadoFrecuenciaSemanal = `🌌 No hay un claro ganador en esta semana, mantente atento de las señales del clima.`
+    }
+
+
+
+
+    return { promedioMinCiudad, promedioMaxCiudad, promedioTodoCiudad, modaClimaCiudad, resumenClimaCiudad, frecuenciaClimas, estadoFrecuenciaSemanal };
 }
 
 
@@ -103,7 +127,9 @@ function cargarDetalle(lugarDetalle) {
     if (!pronosticoSemanal) {
         console.error("No hay datos disponibles");
         return detallesClimaCiudad.innerHTML = `
-            <h1>No hay datos disponibles</h1>
+            <h1 class="container__title">No hay datos disponibles</h1>
+            <h2 class="container__title">El lugar que elegiste no cuenta con los datos requeridos para ser mostrados en la página.</h2>
+            <a href="index.html" class="btn btn-outline-light col-12 error__button">Volver al inicio</a>
         `
     }    
 
@@ -173,6 +199,12 @@ function cargarDetalle(lugarDetalle) {
 
         <section class="estadisticas-semana">
             <h2 class="container__title">Estadísticas de la semana</h2>
+
+            <article class="promedio__min col-sm-12">
+                <h3 class="grado__title">Frecuencia de climas:</h3>
+                <h4 class="grado__text">${estadisticas.frecuenciaClimas}</h4>
+                <h4 class="grado__text">${estadisticas.estadoFrecuenciaSemanal}</h4>
+            </article>
 
             <div class="col-sm-12 promedio__section">
                 <article class="promedio__min col-sm-12 col-md-4">
