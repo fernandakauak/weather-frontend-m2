@@ -1,151 +1,213 @@
-$(document).ready(function () {
-
-    /* CAPTAR INFORMACIÓN PARA USAR EN DETALLE.HTML */
+// Reunir información
+function reuneInformacion() {
     const lugarElegido = localStorage.getItem("lugarElegido");
+    if (!lugarElegido) {
+        console.error("No hay ningún lugar seleccionado en localStorage");
+        return null;
+    }
     const lugarDatos = JSON.parse(lugarElegido);
-    const detallesClimaCiudad = document.getElementById('clima-detalle');
-    const detallesEstadisticaSemana = document.getElementById('estadistica-semana');
-    const detallesCiudad = lugarElegido;
+    return lugarDatos;
+}
 
-    /* PROMEDIO MÍNIMO */
-    let promedioMin = [parseInt(lugarDatos.pronosticoSemanal[0].min), parseInt(lugarDatos.pronosticoSemanal[1].min), parseInt(lugarDatos.pronosticoSemanal[2].min), parseInt(lugarDatos.pronosticoSemanal[3].min), parseInt(lugarDatos.pronosticoSemanal[4].min), parseInt(lugarDatos.pronosticoSemanal[5].min)];
+function calcularEstadisticas(pronosticoSemanal) {
+    const minimas = pronosticoSemanal.map(dia => {
+        return parseFloat(dia.min);
+    });
 
-    let sum = 0;
+    const maximas = pronosticoSemanal.map(dia => {
+        return parseFloat(dia.max);
+    });
 
-    for (let i = 0; i < promedioMin.length; i++) {
-        sum += promedioMin[i];
-    }
+    const sumaMinimas = minimas.reduce(
+        (acumulador, temperatura) => {
+            return acumulador + temperatura;
+        },
+        0
+    );
 
-    const promedioMinCiudad = Math.round(sum / promedioMin.length);
+    const promedioMinCiudad = sumaMinimas / minimas.length;
 
-    /* PROMEDIO MÁXIMO */
-    let promedioMax = [parseInt(lugarDatos.pronosticoSemanal[0].max), parseInt(lugarDatos.pronosticoSemanal[1].max), parseInt(lugarDatos.pronosticoSemanal[2].max), parseInt(lugarDatos.pronosticoSemanal[3].max), parseInt(lugarDatos.pronosticoSemanal[4].max), parseInt(lugarDatos.pronosticoSemanal[5].max)];
+    const sumaMaximas = maximas.reduce((acumulador, temperatura) => {
+            return acumulador + temperatura;
+        }, 0
+    );
 
-    for (let i = 0; i < promedioMax.length; i++) {
-        sum += promedioMax[i];
-    }
+    const promedioMaxCiudad = sumaMaximas / maximas.length;
 
-    const promedioMaxCiudad = Math.round(sum / promedioMax.length);
+    const todasTemperaturas = [ ...minimas, ...maximas ];
 
+    const sumaTotal = todasTemperaturas.reduce((acumulador, temperatura) => {
+            return acumulador + temperatura;
+        }, 0
+    );
 
-    /* PROMEDIO MÍNIMO Y MÁXIMO */
-    let promedioTodoCiudad = Math.round((promedioMinCiudad + promedioMaxCiudad) / 2);
+    const promedioTodoCiudad =sumaTotal / todasTemperaturas.length;
+    const minimaSemana = Math.min(...minimas);
+    const maximaSemana = Math.max(...maximas);
+    const contadorEstados = {};
 
-
-    /* MODA CLIMA POR CIUDAD */
-    let estadoClimaCiudad = [lugarDatos.pronosticoSemanal[0].estado, lugarDatos.pronosticoSemanal[1].estado, lugarDatos.pronosticoSemanal[2].estado, lugarDatos.pronosticoSemanal[3].estado, lugarDatos.pronosticoSemanal[4].estado, lugarDatos.pronosticoSemanal[5].estado];
-
-    function modaClima(arr){
-        return arr.sort((a,b) =>
-            arr.filter(v => v===a).length
-            - arr.filter(v => v===b).length
-        ).pop();
-    }
-
-    let modaClimaCiudad = modaClima(estadoClimaCiudad);
-
-
-    /* MENSAJE SEGÚN CLIMA */
-    function resumenClima() {
-        if (modaClimaCiudad === "Soleado"){
-            return `☀️ Como calienta el sol en tu ciudad... 🎵`
-        } else if (modaClimaCiudad === "Nubosidad Parcial"){
-            return `⛅ Un poco de nube, un poco de sol, un poco de todo, a little respect to me... 🎵`
-        } else if (modaClimaCiudad === "Nublado") {
-            return `☁️ Está nubladito, abrígate y da un paseo un ratito, little fluffy clouds 🎵`
-        } else if (modaClimaCiudad === "Chubascos"){
-            return `🌧️ Esta tarde vi llover, vi gente correr... 🎵`
+    pronosticoSemanal.forEach(dia => {
+        const estado = dia.estado;
+        if (contadorEstados[estado]) {
+            contadorEstados[estado]++;
         } else {
-            return `🪐 No sé tú pero yo no sé donde estamos... this is Major Tom to Ground Control 🎵`
+            contadorEstados[estado] = 1;
+        }
+    });
+
+    let modaClimaCiudad = "";
+    let mayorCantidad = 0;
+
+    for (const estado in contadorEstados) {
+        if (contadorEstados[estado] > mayorCantidad) {
+            mayorCantidad = contadorEstados[estado];
+            modaClimaCiudad = estado;
         }
     }
 
-    let resumenClimaCiudad = resumenClima()
+    let resumenClimaCiudad = "";
+    if (modaClimaCiudad === "Soleado"){
+        resumenClimaCiudad = `☀️ Como calienta el sol en tu ciudad... 🎵`
+    } else if (modaClimaCiudad === "Nubosidad Parcial"){
+        resumenClimaCiudad = `⛅ Un poco de nube, un poco de sol, un poco de todo, a little respect to me... 🎵`
+    } else if (modaClimaCiudad === "Nublado") {
+        resumenClimaCiudad = `☁️ Está nubladito, abrígate y da un paseo un ratito, little fluffy clouds 🎵`
+    } else if (modaClimaCiudad === "Chubascos"){
+        resumenClimaCiudad = `🌧️ Esta tarde vi llover, vi gente correr... 🎵`
+    } else {
+        resumenClimaCiudad = `🪐 No sé tú pero yo no sé donde estamos... this is Major Tom to Ground Control 🎵`
+    }
 
+    return {
+        promedioMinCiudad,
+        promedioMaxCiudad,
+        promedioTodoCiudad,
+        minimaSemana,
+        maximaSemana,
+        modaClimaCiudad,
+        resumenClimaCiudad
+    };
+}
 
-    /* COLOCAR EN ESTRUCTURA HTML */
-    /* ESTRUCTURA: TÍTULO (CON NOMBRE LUGAR), CLIMA, HUMEDAD, VELOCIDAD DE VIENTO Y PRONÓSTICO PARA EL RESTO DE LA SEMANA */
-    detallesClimaCiudad.innerHTML += `
-        <h1 class="container__title">Pronóstico de la semana: ${lugarDatos.nombre}</h1>
+function cargarDetalle(lugarDetalle) {
+    const detallesClimaCiudad = document.getElementById("clima-detalle");
+    if (!detallesClimaCiudad) {
+        console.error("No se encontró un elemento con id='clima-detalle'");
+        return;
+    }
 
+    if (!lugarDetalle) {
+        console.error("cargarDetalle() no recibió datos");
+        return;
+    }
+
+    const estadisticas = calcularEstadisticas(lugarDetalle.pronosticoSemanal);
+
+    detallesClimaCiudad.innerHTML = `<h2>Pronóstico de la semana: ${lugarDetalle.nombre}</h2>
         <div class="col-sm-12 col-md-4 detail__info">
             <h2 class="detail__title">Clima</h2>
-            <div class="detail__ico">${lugarDatos.ico}</div>
-            <h3 class="detail__grade">${lugarDatos.climaActual}</h3>
-            <h3 class="detail__estado">${lugarDatos.estadoActual}</h3>
+            <div class="detail__ico">${lugarDetalle.ico}</div>
+            <h3 class="detail__grade">${lugarDetalle.climaActual}</h3>
+            <h3 class="detail__estado">${lugarDetalle.estadoActual}</h3>
         </div>
 
         <div class="col-sm-12 col-md-4 detail__info">
             <h2 class="detail__title">Humedad</h2>
             <div class="detail__ico">💧</div>
-            <h3 class="detail__grade">${lugarDatos.humedad}</h3>
+            <h3 class="detail__grade">${lugarDetalle.humedad}</h3>
         </div>
 
         <div class="col-sm-12 col-md-4 detail__info">
-            <h2  class="detail__title">Viento</h2>
+            <h2 class="detail__title">Viento</h2>
             <div class="detail__ico">💨</div>
-            <h3 class="detail__grade">${lugarDatos.viento}</h3>
+            <h3 class="detail__grade">${lugarDetalle.viento}</h3>
         </div>
 
         <h2 class="container__title">Pronóstico Semana</h2>
-        <h3 class="container__promedio">Promedio de máxima de la semana: ${lugarDatos.nombre}</h3>
+
+        <h3 class="container__promedio">Promedio de máxima de la semana: ${estadisticas.promedioMaxCiudad.toFixed(1)}°C</h3>
 
         <article class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[0].dia}</h3>
-            <h3 class="forecast__state">${lugarDatos.pronosticoSemanal[0].estado}</h3>
-            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[0].min} / ${lugarDatos.pronosticoSemanal[0].max}</h3>
+            <h3 class="forecast__title">${lugarDetalle.pronosticoSemanal[0].dia}</h3>
+            <h3 class="forecast__state">${lugarDetalle.pronosticoSemanal[0].estado}</h3>
+            <h3 class="forecast__grade">${lugarDetalle.pronosticoSemanal[0].min} / ${lugarDetalle.pronosticoSemanal[0].max}</h3>
         </article>
-        <article class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[1].dia}</h3>
-            <h3 class="forecast__state">${lugarDatos.pronosticoSemanal[1].estado}</h3>
-            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[1].min} / ${lugarDatos.pronosticoSemanal[1].max}</h3>
-        </article>
-        <article class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[2].dia}</h3>
-            <h3 class="forecast__state">${lugarDatos.pronosticoSemanal[2].estado}</h3>
-            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[2].min} / ${lugarDatos.pronosticoSemanal[2].max}</h3>
-        </article>
-        <article class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[3].dia}</h3>
-            <h3 class="forecast__state">${lugarDatos.pronosticoSemanal[3].estado}</h3>
-            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[3].min} / ${lugarDatos.pronosticoSemanal[3].max}</h3>
-        </article>
-        <article class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[4].dia}</h3>
-            <h3 class="forecast__state">${lugarDatos.pronosticoSemanal[4].estado}</h3>
-            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[4].min} / ${lugarDatos.pronosticoSemanal[4].max}</h3>
-        </article>
-        <article class="card col-sm-12 col-md-4 card-body forecast__card">
-            <h3 class="forecast__title">${lugarDatos.pronosticoSemanal[5].dia}</h3>
-            <h3 class="forecast__state">${lugarDatos.pronosticoSemanal[5].estado}</h3>
-            <h3 class="forecast__grade">${lugarDatos.pronosticoSemanal[5].min} / ${lugarDatos.pronosticoSemanal[5].max}</h3>
-        </article>
-    `; 
 
-    detallesEstadisticaSemana.innerHTML += `
-    <h3 class="promedio__title">Promedio de máxima de la semana: ${lugarDatos.nombre}</h3>
-
-    <div class="col-sm-12 promedio__section">
-        <article class="promedio__min col-sm-12 col-md-4 ">
-            <h3 class="grado__title">Mínimo de la semana:</h3>
-            <h4 class="grado__text">${promedioMinCiudad}</h4>
+        <article class="card col-sm-12 col-md-4 card-body forecast__card">
+            <h3 class="forecast__title">${lugarDetalle.pronosticoSemanal[1].dia}</h3>
+            <h3 class="forecast__state">${lugarDetalle.pronosticoSemanal[1].estado}</h3>
+            <h3 class="forecast__grade">${lugarDetalle.pronosticoSemanal[1].min} / ${lugarDetalle.pronosticoSemanal[1].max}</h3>
         </article>
-        <article class="promedio__max col-sm-12 col-md-4 ">
-            <h3 class="grado__title">Máximo de la semana:</h3>
-            <h4 class="grado__text">${promedioMaxCiudad}</h4>
-        </article>
-        <article class="promedio__todo col-sm-12 col-md-4 ">
-            <h3 class="grado__title">Promedio de la semana:</h3>
-            <h4 class="grado__text">${promedioTodoCiudad}</h4>
-        </article>
-    </div>
 
-    <aside class="promedio__estado">
-        <h3 class="estado__title">Clima más repetido:</h3>
-        <h4 class="estado__text">${modaClimaCiudad}</h4>
-        <h3 class="estado__title">Consideración para este clima:</h3> 
-        <h4 class="estado__text">${resumenClimaCiudad}</h4>          
-    </aside>
-    `; 
+        <article class="card col-sm-12 col-md-4 card-body forecast__card">
+            <h3 class="forecast__title">${lugarDetalle.pronosticoSemanal[2].dia}</h3>
+            <h3 class="forecast__state">${lugarDetalle.pronosticoSemanal[2].estado}</h3>
+            <h3 class="forecast__grade">${lugarDetalle.pronosticoSemanal[2].min} / ${lugarDetalle.pronosticoSemanal[2].max}</h3>
+        </article>
 
-});
+        <article class="card col-sm-12 col-md-4 card-body forecast__card">
+            <h3 class="forecast__title">${lugarDetalle.pronosticoSemanal[3].dia}</h3>
+            <h3 class="forecast__state">${lugarDetalle.pronosticoSemanal[3].estado}</h3>
+            <h3 class="forecast__grade">${lugarDetalle.pronosticoSemanal[3].min} / ${lugarDetalle.pronosticoSemanal[3].max}</h3>
+        </article>
+
+        <article class="card col-sm-12 col-md-4 card-body forecast__card">
+            <h3 class="forecast__title">${lugarDetalle.pronosticoSemanal[4].dia}</h3>
+            <h3 class="forecast__state">${lugarDetalle.pronosticoSemanal[4].estado}</h3>
+            <h3 class="forecast__grade">${lugarDetalle.pronosticoSemanal[4].min} / ${lugarDetalle.pronosticoSemanal[4].max}</h3>
+        </article>
+
+        <article class="card col-sm-12 col-md-4 card-body forecast__card">
+            <h3 class="forecast__title">${lugarDetalle.pronosticoSemanal[5].dia}</h3>
+            <h3 class="forecast__state">${lugarDetalle.pronosticoSemanal[5].estado}</h3>
+            <h3 class="forecast__grade">${lugarDetalle.pronosticoSemanal[5].min} / ${lugarDetalle.pronosticoSemanal[5].max}</h3>
+        </article>
+
+        <section class="estadisticas-semana">
+            <h2 class="container__title">Estadísticas de la semana</h2>
+
+            <div class="col-sm-12 promedio__section">
+                <article class="promedio__min col-sm-12 col-md-4">
+                    <h3 class="grado__title">Promedio de mínimas:</h3>
+                    <h4 class="grado__text">${estadisticas.promedioMinCiudad.toFixed(1)}°C</h4>
+                </article>
+
+                <article class="promedio__max col-sm-12 col-md-4">
+                    <h3 class="grado__title">Promedio de máximas:</h3>
+                    <h4 class="grado__text">${estadisticas.promedioMaxCiudad.toFixed(1)}°C</h4>
+                </article>
+
+                <article class="promedio__todo col-sm-12 col-md-4">
+                    <h3 class="grado__title">Promedio general:</h3>
+                    <h4 class="grado__text">${estadisticas.promedioTodoCiudad.toFixed(1)}°C</h4>
+                </article>
+            </div>
+
+            <div class="col-sm-12 promedio__section">
+                <article class="promedio__min col-sm-12 col-md-6">
+                    <h3 class="grado__title">Temperatura mínima de la semana:</h3>
+                    <h4 class="grado__text">${estadisticas.minimaSemana}°C</h4>
+                </article>
+
+                <article class="promedio__max col-sm-12 col-md-6">
+                    <h3 class="grado__title">Temperatura máxima de la semana:</h3>
+                    <h4 class="grado__text">${estadisticas.maximaSemana}°C</h4>
+                </article>
+            </div>
+
+            <aside class="promedio__estado">
+                <h3 class="estado__title">Clima más repetido:</h3>
+                <h4 class="estado__text">${estadisticas.modaClimaCiudad}</h4>
+                <h3 class="estado__title">Consideración para este clima:</h3>
+                <h4 class="estado__text">${estadisticas.resumenClimaCiudad}</h4>
+            </aside>
+        </section>
+    `;
+}
+
+const lugar = reuneInformacion();
+
+if (lugar) {
+    console.log("Lugar recuperado:", lugar);
+    cargarDetalle(lugar);
+}
