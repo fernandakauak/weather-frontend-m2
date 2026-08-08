@@ -1,4 +1,4 @@
-// Reunir información
+// TOMAR INFORMACIÓN DEL LOCALSTORAGE PARA DESPLEGAR EN LA SECCIÓN "DETALLE"
 function reuneInformacion() {
     const lugarElegido = localStorage.getItem("lugarElegido");
     if (!lugarElegido) {
@@ -10,40 +10,41 @@ function reuneInformacion() {
 }
 
 function calcularEstadisticas(pronosticoSemanal) {
-    const minimas = pronosticoSemanal.map(dia => {
+    // OPERATORIAS TEMPERATURAS MÍNIMAS: RECOPILAR, SUMAR, SACAR PROMEDIO
+    const temperaturasMinimas = pronosticoSemanal.map(dia => {
         return parseFloat(dia.min);
     });
 
-    const maximas = pronosticoSemanal.map(dia => {
+    const sumaMinimas = temperaturasMinimas.reduce((acumulador, temperatura) => {
+            return acumulador + temperatura; 
+        }, 0
+    );
+
+    const promedioMinCiudad = sumaMinimas / temperaturasMinimas.length;
+
+    // OPERATORIAS TEMPERATURAS MÍNIMAS: RECOPILAR, SUMAR, SACAR PROMEDIO
+    const temperaturasMaximas = pronosticoSemanal.map(dia => {
         return parseFloat(dia.max);
     });
 
-    const sumaMinimas = minimas.reduce(
-        (acumulador, temperatura) => {
-            return acumulador + temperatura;
-        },
-        0
-    );
-
-    const promedioMinCiudad = sumaMinimas / minimas.length;
-
-    const sumaMaximas = maximas.reduce((acumulador, temperatura) => {
+    const sumaMaximas = temperaturasMaximas.reduce((acumulador, temperatura) => {
             return acumulador + temperatura;
         }, 0
     );
 
-    const promedioMaxCiudad = sumaMaximas / maximas.length;
+    const promedioMaxCiudad = sumaMaximas / temperaturasMaximas.length;
 
-    const todasTemperaturas = [ ...minimas, ...maximas ];
+    // OPERATORIAS PROMEDIO TEMPERATURAS: RECOPILAR, SUMAR, SACAR PROMEDIO 
+    const todasTemperaturas = [ ...temperaturasMinimas, ...temperaturasMaximas ];
 
     const sumaTotal = todasTemperaturas.reduce((acumulador, temperatura) => {
             return acumulador + temperatura;
         }, 0
     );
 
-    const promedioTodoCiudad =sumaTotal / todasTemperaturas.length;
-    const minimaSemana = Math.min(...minimas);
-    const maximaSemana = Math.max(...maximas);
+    const promedioTodoCiudad = sumaTotal / todasTemperaturas.length;
+
+    // MODA DE CLIMA PARA MENSAJE PERSONALIZADO
     const contadorEstados = {};
 
     pronosticoSemanal.forEach(dia => {
@@ -82,28 +83,36 @@ function calcularEstadisticas(pronosticoSemanal) {
         promedioMinCiudad,
         promedioMaxCiudad,
         promedioTodoCiudad,
-        minimaSemana,
-        maximaSemana,
         modaClimaCiudad,
         resumenClimaCiudad
     };
 }
 
+
+// CARGA DE DETALLES EN DETALLE.HTML
 function cargarDetalle(lugarDetalle) {
     const detallesClimaCiudad = document.getElementById("clima-detalle");
+    const pronosticoSemanal = lugarDetalle.pronosticoSemanal;
+
+    // PROBLEMAS DE CARGA: NO HAY DATOS DE PRONÓSTICO SEMANAL O NO HAY CIUDAD
     if (!detallesClimaCiudad) {
-        console.error("No se encontró un elemento con id='clima-detalle'");
+        console.error("No se encontraron detalles del clima seleccionado'");
         return;
     }
 
-    if (!lugarDetalle) {
-        console.error("cargarDetalle() no recibió datos");
-        return;
-    }
+    if (!pronosticoSemanal) {
+        console.error("No hay datos disponibles");
+        return detallesClimaCiudad.innerHTML = `
+            <h1>No hay datos disponibles</h1>
+        `
+    }    
 
+    // CÁLCULO DE ESTADÍSTICAS    
     const estadisticas = calcularEstadisticas(lugarDetalle.pronosticoSemanal);
 
-    detallesClimaCiudad.innerHTML = `<h2>Pronóstico de la semana: ${lugarDetalle.nombre}</h2>
+    // HTMP DETALLES: PRONÓSTICOS Y ESTADÍSTICAS
+    detallesClimaCiudad.innerHTML = `
+        <h1 class="container__title">Pronóstico de la semana: <br/> ${lugarDetalle.nombre}</h1>
         <div class="col-sm-12 col-md-4 detail__info">
             <h2 class="detail__title">Clima</h2>
             <div class="detail__ico">${lugarDetalle.ico}</div>
@@ -123,8 +132,7 @@ function cargarDetalle(lugarDetalle) {
             <h3 class="detail__grade">${lugarDetalle.viento}</h3>
         </div>
 
-        <h2 class="container__title">Pronóstico Semana</h2>
-
+        <h2 class="container__title">Pronóstico de la Semana</h2>
         <h3 class="container__promedio">Promedio de máxima de la semana: ${estadisticas.promedioMaxCiudad.toFixed(1)}°C</h3>
 
         <article class="card col-sm-12 col-md-4 card-body forecast__card">
@@ -168,30 +176,18 @@ function cargarDetalle(lugarDetalle) {
 
             <div class="col-sm-12 promedio__section">
                 <article class="promedio__min col-sm-12 col-md-4">
-                    <h3 class="grado__title">Promedio de mínimas:</h3>
+                    <h3 class="grado__title">Mínimo de la semana:</h3>
                     <h4 class="grado__text">${estadisticas.promedioMinCiudad.toFixed(1)}°C</h4>
                 </article>
 
                 <article class="promedio__max col-sm-12 col-md-4">
-                    <h3 class="grado__title">Promedio de máximas:</h3>
+                    <h3 class="grado__title">Máximo de la semana:</h3>
                     <h4 class="grado__text">${estadisticas.promedioMaxCiudad.toFixed(1)}°C</h4>
                 </article>
 
                 <article class="promedio__todo col-sm-12 col-md-4">
-                    <h3 class="grado__title">Promedio general:</h3>
+                    <h3 class="grado__title">Promedio de la semana:</h3>
                     <h4 class="grado__text">${estadisticas.promedioTodoCiudad.toFixed(1)}°C</h4>
-                </article>
-            </div>
-
-            <div class="col-sm-12 promedio__section">
-                <article class="promedio__min col-sm-12 col-md-6">
-                    <h3 class="grado__title">Temperatura mínima de la semana:</h3>
-                    <h4 class="grado__text">${estadisticas.minimaSemana}°C</h4>
-                </article>
-
-                <article class="promedio__max col-sm-12 col-md-6">
-                    <h3 class="grado__title">Temperatura máxima de la semana:</h3>
-                    <h4 class="grado__text">${estadisticas.maximaSemana}°C</h4>
                 </article>
             </div>
 
@@ -205,6 +201,7 @@ function cargarDetalle(lugarDetalle) {
     `;
 }
 
+// CARGA DE FUNCIONES Y RECOPILACIÓN DE DATOS
 const lugar = reuneInformacion();
 
 if (lugar) {

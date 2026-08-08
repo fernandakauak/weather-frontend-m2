@@ -515,5 +515,14 @@
         "estado": "Clases de Flamenco"
       }
     ]
+  },
+  {
+    "id": "12",
+    "nombre": "El por qué de las cosas",
+    "humedad": "0%",
+    "viento": "1500kms/h",
+    "ico": "😸",
+    "climaActual": "0°C",
+    "estadoActual": "Vacío Existencial"
   }
 ]
