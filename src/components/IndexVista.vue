@@ -1,30 +1,32 @@
 <script setup>
     import { ref } from 'vue'
     import { climas } from '../climas.js'
+    import { useRouter } from 'vue-router';
+    const router = useRouter();
+
+    function detalle(id) {
+        router.push({ name: 'climaDetalle', params: {id} });
+    }
 </script>
 
 <template>
-    <main class="container p-2 container_body">
-        <h1 class="container__title">KlimatHaus</h1>
-        <h3 class="container__subtitle">El clima en tu casa</h3>
-        <section class="clima-view" id="lugares-clima">
-            <article class="climacard" v-for="clima in climas" :key="clima.id">
-                <div class="card-body text-center climacard__body">
-                    <h2 class="card-title climacard__title">{{ clima.nombre }}</h2>
-                    <div class="climacard__ico">{{ clima.ico }}</div>
-                    <h3 class="climacard__grado">{{ clima.climaActual }}</h3>
-                    <h4 class="climacard__estado">{{ clima.estadoActual }}</h4>
-                    <a type="button" class="btn btn-outline-light col-12 climacard__button" id="btn-detalle-{{ clima.id }}" href="detalle.html">Detalles</a>        
-                </div>
-                <button @click="verDetalle(disco.id)">Ver</button>
-            </article>
-        </section>
-    </main>
+    <section class="clima-view" id="lugares-clima">
+        <article class="climacard" v-for="clima in climas" :key="clima.id">
+            <div class="card-body text-center climacard__body">
+                <h2 class="card-title climacard__title">{{ clima.nombre }}</h2>
+                <div class="climacard__ico">{{ clima.ico }}</div>
+                <h3 class="climacard__grado">{{ clima.climaActual }}</h3>
+                <h4 class="climacard__estado">{{ clima.estadoActual }}</h4>
+                <button @click.prevent="detalle(clima.id)">Ver</button>   
+            </div>    
+        </article>
+    </section>
 </template>
 
 <style scoped>
     section.clima-view {    
-        width: 100%;
+        width: 90%;
+        margin: 1% auto;
         display: flex;
         flex-wrap: wrap;
         gap: 3%;
