@@ -5,7 +5,7 @@
     const router = useRouter();
 
     function detalle(id) {
-        router.push({ name: 'climaDetalle', params: {id} });
+        router.push({ name: 'detalleClima', params: {id} });
     }
 </script>
 
@@ -17,7 +17,8 @@
                 <div class="climacard__ico">{{ clima.ico }}</div>
                 <h3 class="climacard__grado">{{ clima.climaActual }}</h3>
                 <h4 class="climacard__estado">{{ clima.estadoActual }}</h4>
-                <button @click.prevent="detalle(clima.id)">Ver</button>   
+
+                <button @click="detalle(clima.id)">Ver detalle</button>   
             </div>    
         </article>
     </section>

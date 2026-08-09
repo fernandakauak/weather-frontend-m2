@@ -24,10 +24,10 @@ const router = createRouter({
         },
         {
             path: '/clima/:id/detalle',
-            name: 'climaDetalle',
+            name: 'detalleClima',
             component: DetalleClimaVista,
             props: true
-        },
+        }
     ]
 });
 
