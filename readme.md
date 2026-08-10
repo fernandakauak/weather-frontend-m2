@@ -19,8 +19,8 @@
   ## Descarga
   - Este se va a subir como ZIP al Aula Digital, pero también pueden acceder en el siguiente link:
   <https://github.com/fernandakauak/weather-frontend-m2.git>
-  - También pueden verlo en acción aquí:
-  <https://fernandakauak.github.io/weather-frontend-m2/>
+  - A partir de la versión del Módulo 6 (con Vue), se puede ver aquí: <https://fernandakauak.github.io/weather-frontend-m2/>
+  - Antes se veía aquí: <https://fernandakauak.github.io/weather-frontend-m2/>
 
   ### ¡Que tengan una buena semana!
 
@@ -34,7 +34,7 @@
   2. Se utiliza Vue Router para crear las rutas de los sitios (y así también el header y el footer se coloca sólo en el archivo App.vue). Las rutas son **/inicio** y **/** *(componente: IndexVista.vue)* para el inicio con las ciudades disponibles (la ruta / redirecciona a /inicio), **/acerca** *(componente AcercaVista.vue)* con la información de la aplicación y **/clima/:id/detalle** *(componente: DetalleClimaVista.vue)* para los detalles de las ciudades, **siempre y cuando se apretara el botón "Ver Detalle"**, en caso contrario está la ruta **/clima/detalle** *(componente: DetalleVista.vue)* que lleva a una sección que indica que hay que ir a inicio para elegir ciudad.
 ![index.js de Routes](img-readme/06_rutas.png)
 
-  3. Ahora cuenta con su versión en gh-pages: https://fernandakauak.github.io/weather-frontend-m2/
+  3. Ahora cuenta con su versión en gh-pages: <https://fernandakauak.github.io/weather-frontend-m2/>
 
   4. La información de climas presentes se cargan importando el archivo externo **climas.js** ubicado en la carpeta raíz **src**.
 

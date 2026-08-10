@@ -5,13 +5,15 @@ import DetalleVista from '../components/DetalleVista.vue';
 import DetalleClimaVista from '../components/DetalleClimaVista.vue';
 
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+    // reemplacé createWebHistory para usar gh-pages
+    history: createWebHashHistory(import.meta.env.BASE_URL),
     
     routes: [
         {
             path: '/',
             redirect: '/inicio'
         },
+    
         {
             path: '/inicio',
             name:'inicio',
