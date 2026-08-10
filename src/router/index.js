@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import InicioVista from '../components/IndexVista.vue';
 import AcercaVista from '../components/AcercaVista.vue';
 import DetalleVista from '../components/DetalleVista.vue';
