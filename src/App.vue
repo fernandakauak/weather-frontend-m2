@@ -12,9 +12,9 @@
     </nav>
   </header>
   <router-view />
-  <!--<footer class="footer p-3 text-center bg-primary bg-gradient">
+  <footer class="footer p-3 text-center bg-primary bg-gradient">
     <p class="footer__content">Sitio creado por Fernanda Kauak Alaff, en el Curso de Desarrollo Front End 2026</p>
-  </footer>-->
+  </footer>
 </template>
 
 <style scoped>

@@ -18,7 +18,7 @@
                 <h3 class="climacard__grado">{{ clima.climaActual }}</h3>
                 <h4 class="climacard__estado">{{ clima.estadoActual }}</h4>
 
-                <button @click="detalle(clima.id)">Ver detalle</button>   
+                <button class="climacard__button" @click="detalle(clima.id)">Ver detalle</button>   
             </div>    
         </article>
     </section>
@@ -79,23 +79,15 @@
     }
 
     .climacard__button {
-        padding: 5px 10px;
+        padding: 4%;
         font-weight: bold;
         font-size: 16px;
-        background-color: rgb(138, 43, 226);
+        background-color: rgb(128, 0, 128);
         border: 1px solid rgb(128, 0, 128);
         width: 100%;
         color: white;
         text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-        .climacard__button {
-            padding: 5px 10px;
-            font-weight: bold;
-            font-size: 16px;
-            background-color: rgb(138, 43, 226);
-            border: 1px solid rgb(128, 0, 128);
-        }
+        margin-top: 2%;
+        cursor: pointer;
     }
 </style>
