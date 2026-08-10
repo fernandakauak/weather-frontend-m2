@@ -18,8 +18,7 @@
                 <img src="/src/assets/representante-klimathaus.jpg" alt="Representante de KlimatHaus" />
             </div>
         </article>
-        
-        </section>
+    </section>
 </template>
 
 <style scoped>

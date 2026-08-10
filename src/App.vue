@@ -8,6 +8,7 @@
     <h3 class="header__subtitle">El clima en tu casa</h3>
     <nav>
       <router-link :to="{ name:'inicio' }" active-class="active">Inicio</router-link>
+      <router-link :to="{ name:'detalle' }" active-class="active">Detalles</router-link>
       <router-link :to="{ name:'acerca' }" active-class="active">Sobre Nosotros</router-link>
     </nav>
   </header>

@@ -177,10 +177,8 @@
         </section>
     </div>
     <div v-else>
-        No hay nada aquí
+        <h1 class="container__title">No hay nada aquí</h1>
     </div>
-
-
 </template>
 
 <style scoped>

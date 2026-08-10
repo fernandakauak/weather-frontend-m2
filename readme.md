@@ -3,6 +3,7 @@
   ## Índice
   - Con respecto al repositorio
   - Links de descarga y vista
+  - Actualización 9-08-2026
   - Actualización 8-08-2026
   - Actualización 04-07-2026
   - Actualización 21-06-2026
@@ -26,7 +27,25 @@
   ---
   ---
 
-  ## Actualización 04-07-2026: Versión Portafolio - Módulo 5
+  ## Actualización 09-08-2026: Versión Portafolio - Módulo 5
+  En esta actualización se añadió lo siguiente:
+  1. Se pasó el formato a HTML simple al Framework **VueJS**. La estructura antigua se ubica en la carpeta **0_Sitio Antiguo**.
+
+  2. Se utiliza Vue Router para crear las rutas de los sitios (y así también el header y el footer se coloca sólo en el archivo App.vue). Las rutas son **/inicio** y **/** *(componente: IndexVista.vue)* para el inicio con las ciudades disponibles (la ruta / redirecciona a /inicio), **/acerca** *(componente AcercaVista.vue)* con la información de la aplicación y **/clima/:id/detalle** *(componente: DetalleClimaVista.vue)* para los detalles de las ciudades, **siempre y cuando se apretara el botón "Ver Detalle"**, en caso contrario está la ruta **/clima/detalle** *(componente: DetalleVista.vue)* que lleva a una sección que indica que hay que ir a inicio para elegir ciudad.
+![index.js de Routes](img-readme/06_rutas.png)
+
+  3. Ahora cuenta con su versión en gh-pages: https://fernandakauak.github.io/weather-frontend-m2/
+
+  4. La información de climas presentes se cargan importando el archivo externo **climas.js** ubicado en la carpeta raíz **src**.
+
+  5. Para ver este repositorio hay que instalar Vue, para ello se abre **Git Bash** y, al posicionarse en la carpeta, se usan el comando **npm install vue**. Luego se debe instalar Vue Router para que las rutas se puedas leer, para lo cual se instala **npm install vue-router**. Finalmente hay que activarlo para que dé su link de localhost, esta vez usamos el comando **npm run dev** y copiamos el link ya mencionado para verlo en el explorador.
+  
+   ### ¡Saludos y muchas gracias! ¿Qué les pareció esta nueva versión? A mí me gusta bastante :smiley_cat:
+
+  ---
+
+
+  ## Actualización 09-08-2026: Versión Portafolio - Módulo 5
   **Antes de empezar:** *De ahora en adelante las actualizaciones del README tendrán imágenes. Si no se ven, pueden verlas en la carpeta img-readme. En el zip que se subirá a la plataforma, estarán en un archivo Word*
   En esta actualización se añadió lo siguiente:
   1. Los datos cargados de clima pasaron de ser un array en el archivo app.js a un archivo JSON llamado ***apiprueba.json**, el cuál actua como API de prueba.
