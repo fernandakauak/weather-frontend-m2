@@ -2,7 +2,9 @@
   
   ## Índice
   - Con respecto al repositorio
-  - Links de descarga y vista
+  - Descarga
+  - Versión en VueJS
+  - Actualización 17-08-2026
   - Actualización 9-08-2026
   - Actualización 8-08-2026
   - Actualización 04-07-2026
@@ -15,19 +17,28 @@
   
   Espero que les guste y cualquier duda que tengan, así como el resultado final de la revisión, me la pueden hacer llegar directamente.
 
-
   ## Descarga
   - Este se va a subir como ZIP al Aula Digital, pero también pueden acceder en el siguiente link:
   <https://github.com/fernandakauak/weather-frontend-m2.git>
   - A partir de la versión del Módulo 6 (con Vue), se puede ver aquí: <https://fernandakauak.github.io/weather-frontend-m2/>
   - Antes se veía aquí: <https://fernandakauak.github.io/weather-frontend-m2/>
 
+  ## Versión en VueJS
+  Para ver el sitio luego de descargar el repositorio, hay que abrir la carpeta en **Visual Studio Code** (o su editor de HTML con consola), abrir **Git Bash** y escribir los comandos **npm instal** y **npm run dev** para que la aplicación se abra en localhost.
+
   ### ¡Que tengan una buena semana!
 
   ---
   ---
 
-  ## Actualización 09-08-2026: Versión Portafolio - Módulo 5
+ ## Actualización 17-08-2026: Versión Portafolio - Módulo 8
+  En esta actualización se hicieron cambios para mejorar la interfaz de la aplicación de clima en **IndexVista.vue, DetalleClimaVista.vue y AcercaVista.vue**.
+  
+   ### ¡Saludos y muchas gracias! Gracias por las enseñanzas en este curso :smiley_cat:
+
+  ---
+
+  ## Actualización 09-08-2026: Versión Portafolio - Módulo 6
   En esta actualización se añadió lo siguiente:
   1. Se pasó el formato a HTML simple al Framework **VueJS**. La estructura antigua se ubica en la carpeta **0_Sitio Antiguo**.
 

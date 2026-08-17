@@ -27,6 +27,18 @@
 
   .header__title, .header__subtitle {
     color: midnightblue;
+    text-align: center;
+  }
+
+  .header__title {
+    font-size: 42px;
+    margin-bottom: 0;
+  }
+
+  .header__subtitle {
+    margin-top: 0;
+    font-size: 28px;
+    font-style: italic;
   }
 
   nav a {

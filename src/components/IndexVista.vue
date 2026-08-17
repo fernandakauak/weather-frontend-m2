@@ -34,7 +34,7 @@
     }
 
     .climacard {
-        width: 30%;
+        width: 31.3%;
         background-color: #7d858c;
         margin: 1% 0;
     }
@@ -52,6 +52,8 @@
         color: rgb(255, 255, 255);
         text-align: center;
         width: 100%;
+        font-size: 30px;
+        font-weight: normal;
     }
 
     .climacard__estado {
@@ -59,7 +61,7 @@
         color: rgb(255, 255, 255);
         text-align: center;
         width: 100%;
-        font-size: 21px;
+        font-size: 32px;
         font-weight: normal;
         margin: 0 0 1%;
     }
@@ -81,7 +83,7 @@
     .climacard__button {
         padding: 4%;
         font-weight: bold;
-        font-size: 16px;
+        font-size: 28px;
         background-color: rgb(128, 0, 128);
         border: 1px solid rgb(128, 0, 128);
         width: 100%;

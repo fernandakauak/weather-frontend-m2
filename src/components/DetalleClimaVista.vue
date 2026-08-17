@@ -109,7 +109,7 @@
 <template>
     <button class="volver" @click="router.back()">Volver al inicio</button>
     <div v-if="detalle">
-        <h1 class="container__title">Pronóstico del día: <br/> {{ detalle.nombre }}</h1>
+        <h1 class="container__title">Pronóstico del día: {{ detalle.nombre }}</h1>
         <section class="detail">
             <div class="detail__info">
                 <h2 class="detail__title">Clima</h2>
@@ -124,7 +124,7 @@
                 <h3 class="detail__grade">{{ detalle.humedad }}</h3>
             </div>
 
-            <div class="col-sm-12 col-md-4 detail__info">
+            <div class="detail__info">
                 <h2 class="detail__title">Viento</h2>
                 <div class="detail__ico">💨</div>
                 <h3 class="detail__grade">{{ detalle.viento }}</h3>
@@ -134,7 +134,7 @@
         <h1 class="container__title">Pronóstico de la Semana</h1>
 
         <section class="forecast">
-            <article class="card col-sm-12 col-md-4 card-body forecast__card" v-for="pronostico in detalle.pronosticoSemanal" :key="pronostico.id">
+            <article class="forecast__card" v-for="pronostico in detalle.pronosticoSemanal" :key="pronostico.id">
                 <h3 class="forecast__title">{{ pronostico.dia }}</h3>
                 <h3 class="forecast__state">{{ pronostico.estado }}</h3>
                 <h3 class="forecast__grade">{{ pronostico.min }} / {{ pronostico.max }}</h3>
@@ -145,34 +145,32 @@
         <section class="estadisticas-semana">
             <h2 class="container__title">Estadísticas de la semana</h2>
 
-            <article class="promedio__estado col-sm-12">
+            <article class="promedio__estado">
                 <h3 class="grado__title">Frecuencia de climas:</h3>
                 <h4 class="grado__text">{{ frecuenciaClimas }}</h4>
                 <h4 class="grado__text">{{ estadoFrecuenciaSemanal }}</h4>
             </article>
 
             <div class="col-sm-12 promedio__section">
-                <article class="promedio__min col-sm-12 col-md-4">
+                <article class="promedio__min">
                     <h3 class="grado__title">Mínimo de la semana:</h3>
                     <h4 class="grado__text">{{ promedioMinCiudad }}°C</h4>
                 </article>
 
-                <article class="promedio__max col-sm-12 col-md-4">
+                <article class="promedio__max">
                     <h3 class="grado__title">Máximo de la semana:</h3>
                     <h4 class="grado__text">{{ promedioMaxCiudad }}°C</h4>
                 </article>
 
-                <article class="promedio__todo col-sm-12 col-md-4">
+                <article class="promedio__todo">
                     <h3 class="grado__title">Promedio de la semana:</h3>
                     <h4 class="grado__text">{{ promedioTodoCiudad }}°C</h4>
                 </article>
             </div>
 
             <aside class="promedio__estado">
-                <h3 class="estado__title">Clima más repetido:</h3>
-                <h4 class="estado__text">{{ modaClimaCiudad }}</h4>
-                <h3 class="estado__title">Consideración para este clima:</h3>
-                <h4 class="estado__text">{{ resumenClimaCiudad }}</h4>
+                <h3 class="estado__title">Clima más repetido: {{ modaClimaCiudad }}</h3>
+                <h4 class="estado__text">Consideración para este clima: {{ resumenClimaCiudad }}</h4>
             </aside>
         </section>
     </div>
@@ -183,10 +181,10 @@
 
 <style scoped>
     .forecast {
-        width: 100%;
+        width: 96%;
         display: flex;
         gap: 2%;
-        margin-bottom: 5%;
+        margin: 1% auto 5%;
     }
 
     .forecast__card {
@@ -205,8 +203,17 @@
         font-family: "Titan One", sans-serif;
         color: rgb(255, 255, 255);
         text-align: center;
-        font-size: 20px;
+        font-size: 28px;
         font-weight: normal;
+        margin: 0;
+        border-bottom: 1px solid white;
+    }
+
+    .forecast__grade {
+        font-size: 21px;
+        color: white;
+        padding: 6%;
+        background-color: rgb(211, 121, 223);
         margin: 0;
     }
 
@@ -218,7 +225,9 @@
 
     .detail {
         display: flex;
+        width: 96%;
         gap: 2%;
+        margin: auto;
     }
 
     .detail__info {
@@ -273,11 +282,16 @@
         margin: 3px auto;
     }
 
+    .promedio__estado .estado__title {
+        font-size: 32px;
+    }
+
     .container__title {
         font-family: "Titan One", sans-serif;
         color: rgb(255, 255, 255);
         text-align: center;
-        margin: 3px auto;
+        margin: 2% auto;
+        font-size: 36px;
     }
 
     .container__subtitle {
@@ -305,6 +319,9 @@
         text-align: center;
         font-weight: bold;
         border-radius: 10px;
+        width: 85%;
+        margin: 1% auto 3%;
+        padding: 2%;
     }
 
     .promedio__min, .promedio__max, .promedio__todo {
@@ -330,16 +347,15 @@
     }
 
     .promedio__section {
-        width: 100%;
+        width: 90%;
         display: flex;
+        margin: 2% auto;
+        padding: 1%;
     }
 
-    .promedio__estado {
-        background: rgba(85, 17, 82, 0.5);
+    .promedio__section .promedio__min, .promedio__section .promedio__max, .promedio__section .promedio__todo {
         padding: 2%;
-        text-align: center;
-        font-weight: bold;
-        border-radius: 10px;
+        height: 70px;
     }
 
     .grado__text, .estado__text {
@@ -347,6 +363,12 @@
         color: rgb(255, 255, 255);
         text-align: center;
         margin: 0;
+        font-size: 24px;
+        font-weight: normal;
+    }
+
+    .detail__title {
+        color: white;
         font-size: 24px;
         font-weight: normal;
     }

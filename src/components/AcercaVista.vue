@@ -31,6 +31,7 @@
         color: rgb(255, 255, 255);
         text-align: center;
         margin: 3px auto;
+        font-size: 42px;
     }
 
     .welcome__subtitle {
@@ -38,6 +39,8 @@
         color: rgb(255, 255, 255);
         text-align: center;
         margin: 3px auto;
+        font-size: 24px;
+        font-style: italic;
     }
 
     .about {
@@ -50,7 +53,7 @@
         background-color: rgb(255, 255, 255);
         padding: 2%;
         font-size: 18px;
-        width: 56%;
+        width: 66%;
     }
 
     .about__img {
